@@ -10,3 +10,12 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+// Include the rest of the theme functionality.
+foreach ( glob( get_stylesheet_directory() . '/includes/*.php' ) as $filename ) {
+	if ( preg_match( '#/includes/_#i', $filename ) ) {
+		continue; // Ignore files prefixed with an underscore.
+	}
+
+	include $filename;
+}
