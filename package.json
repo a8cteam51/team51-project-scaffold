@@ -7,8 +7,12 @@
     "url": "https://github.com/a8cteam51/build-processes-demo/issues"
   },
   "devDependencies": {
+    "@wordpress/browserslist-config": "latest",
     "@wordpress/scripts": "latest"
   },
+  "browserslist": [
+    "extends @wordpress/browserslist-config"
+  ],
   "scripts": {
 
   }
