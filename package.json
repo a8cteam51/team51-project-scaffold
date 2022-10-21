@@ -19,6 +19,21 @@
     "extends @wordpress/browserslist-config"
   ],
   "scripts": {
+    "format:scripts": "npm-run-all format:scripts:* --sequential",
+    "format:scripts:theme": "prettier --write --no-error-on-unmatched-pattern themes/$npm_package_name/**/*.{js,jsx,ts,tsx,json,yml,yaml}",
+    "format:scripts:mu-plugins": "prettier --write --no-error-on-unmatched-pattern mu-plugins/**/*.{js,jsx,ts,tsx,json,yml,yaml}",
+    "format:styles": "npm-run-all format:styles:* --sequential",
+    "format:styles:theme": "npm run lint:styles:theme -- --fix",
+    "format:styles:mu-plugins": "npm run lint:styles:mu-plugins -- --fix",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "lint:readme-md": "wp-scripts lint-md-docs README.md",
+    "lint:scripts": "npm-run-all lint:scripts:* --sequential",
+    "lint:scripts:theme": "eslint themes/$npm_package_name/**/*.{js,jsx,ts,tsx} --no-error-on-unmatched-pattern",
+    "lint:scripts:mu-plugins": "eslint mu-plugins/**/*.{js,jsx,ts,tsx} --no-error-on-unmatched-pattern",
+    "lint:styles": "npm-run-all lint:styles:* --sequential",
+    "lint:styles:theme": "stylelint themes/$npm_package_name/**/*.{css,sass,scss} !themes/$npm_package_name/style.css --allow-empty-input --report-descriptionless-disables --report-invalid-scope-disables --report-needless-disables",
+    "lint:styles:mu-plugins": "stylelint mu-plugins/**/*.{css,sass,scss} --allow-empty-input --report-descriptionless-disables --report-invalid-scope-disables --report-needless-disables",
+    "packages-update": "wp-scripts packages-update"
     "check-engines": "wp-scripts check-engines",
     "check-licenses": "wp-scripts check-licenses"
   }
