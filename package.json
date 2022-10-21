@@ -1,0 +1,15 @@
+{
+  "name": "build-processes-demo",
+  "version": "1.0.0",
+  "description": "A demo project for showcasing standardized build processes for various asset types.",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/a8cteam51/build-processes-demo/issues"
+  },
+  "devDependencies": {
+
+  },
+  "scripts": {
+
+  }
+}
