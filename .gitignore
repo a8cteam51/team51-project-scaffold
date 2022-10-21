@@ -27,7 +27,7 @@ mu-plugins/*
 !mu-plugins/wc-usage-tracking-auto-opt-in
 
 themes/*
-
+!themes/build-processes-demo
 
 # Other wp-content exclusions
 upgrade/*
