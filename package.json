@@ -6,10 +6,15 @@
   "bugs": {
     "url": "https://github.com/a8cteam51/build-processes-demo/issues"
   },
+  "engines": {
+    "node": ">=16.0",
+    "npm": ">=7.0"
+  },
   "devDependencies": {
     "@wordpress/scripts": "latest"
   },
   "scripts": {
-
+    "check-engines": "wp-scripts check-engines",
+    "check-licenses": "wp-scripts check-licenses"
   }
 }
