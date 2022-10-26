@@ -39,5 +39,8 @@
     "check-licenses": "wp-scripts check-licenses"
 	"build:blocks": "wp-scripts build --webpack-src-dir=mu-plugins/$npm_package_name-blocks/src --output-path=mu-plugins/$npm_package_name-blocks/build",
 	"start:blocks": "wp-scripts start --webpack-src-dir=mu-plugins/$npm_package_name-blocks/src --output-path=mu-plugins/$npm_package_name-blocks/build"
+    "build": "npm-run-all build:* --parallel",
+    "build:blocks": "wp-scripts build --webpack-src-dir=mu-plugins/$npm_package_name-blocks/src --output-path=mu-plugins/$npm_package_name-blocks/build",
+    "start:blocks": "wp-scripts start --webpack-src-dir=mu-plugins/$npm_package_name-blocks/src --output-path=mu-plugins/$npm_package_name-blocks/build"
   }
 }
