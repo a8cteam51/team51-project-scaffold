@@ -1,16 +1,14 @@
 <?php
 /**
- * Plugin Name:       Todo List
+ * Plugin Name:       Build Processes Demo Blocks
  * Description:       Example block scaffolded with Create Block tool.
- * Requires at least: 5.9
- * Requires PHP:      7.0
+ * Requires at least: 6.1
+ * Requires PHP:      8.1
  * Version:           0.1.0
- * Author:            The WordPress Contributors
- * License:           GPL-2.0-or-later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       todo-list
- *
- * @package           create-block
+ * Author:            WP Special Projects
+ * License:           GPL-3.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain:       build-processes-demo-blocks
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -22,8 +20,8 @@ defined( 'ABSPATH' ) || exit;
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
-function create_block_todo_list_block_init(): void {
+function build_processes_demo_blocks_init(): void {
 	register_block_type( __DIR__ . '/build/foobar' );
 	register_block_type( __DIR__ . '/build/spamham' );
 }
-add_action( 'init', 'create_block_todo_list_block_init' );
+add_action( 'init', 'build_processes_demo_blocks_init' );
