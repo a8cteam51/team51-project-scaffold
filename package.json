@@ -12,8 +12,8 @@
     "npm": ">=7.0"
   },
   "devDependencies": {
-    "@wordpress/browserslist-config": "latest",
-    "@wordpress/scripts": "^24.4.0",
+    "@wordpress/browserslist-config": "^5.5.0",
+    "@wordpress/scripts": "^24.6.0",
     "npm-run-all": "^4.1.5"
   },
   "browserslist": [
@@ -34,7 +34,7 @@
     "lint:styles": "npm-run-all lint:styles:* --sequential",
     "lint:styles:theme": "wp-scripts lint-style themes/$npm_package_name/**/*.{css,sass,scss} !themes/$npm_package_name/style.css --allow-empty-input --report-descriptionless-disables --report-invalid-scope-disables --report-needless-disables",
     "lint:styles:mu-plugins": "wp-scripts lint-style mu-plugins/**/*.{css,sass,scss} --allow-empty-input --report-descriptionless-disables --report-invalid-scope-disables --report-needless-disables",
-    "packages-update": "wp-scripts packages-update"
+    "packages-update": "wp-scripts packages-update",
     "check-engines": "wp-scripts check-engines",
     "check-licenses": "wp-scripts check-licenses"
   }
