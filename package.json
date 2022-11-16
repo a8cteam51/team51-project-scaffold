@@ -7,10 +7,19 @@
     "url": "https://github.com/a8cteam51/build-processes-demo/issues"
   },
   "private": true,
+  "engines": {
+    "node": ">=16.0",
+    "npm": ">=7.0"
+  },
   "devDependencies": {
+    "@wordpress/browserslist-config": "latest",
     "@wordpress/scripts": "latest"
   },
+  "browserslist": [
+    "extends @wordpress/browserslist-config"
+  ],
   "scripts": {
-
+    "check-engines": "wp-scripts check-engines",
+    "check-licenses": "wp-scripts check-licenses"
   }
 }
