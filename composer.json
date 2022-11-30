@@ -36,6 +36,8 @@
     "wp-coding-standards/wpcs": "*",
 
 	"roave/security-advisories": "dev-latest"
+    "wpackagist-plugin/woocommerce": "*",
+    "wp-cli/i18n-command": "^2.4"
   },
 
   "scripts": {
@@ -47,6 +49,10 @@
 	"format:php:theme": "phpcbf --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
 	"format:php:blocks": "phpcbf --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
 	"format:php:plugin": "phpcbf --standard=./mu-plugins/build-processes-demo-extra-functionality/.phpcs.xml ./mu-plugins/build-processes-demo-extra-functionality -v",
+    "makepot": [
+			"wp i18n make-pot"
+		]
+  },
 
 	"lint:php": [
 	  "@lint:php:theme",
