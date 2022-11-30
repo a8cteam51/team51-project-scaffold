@@ -24,15 +24,21 @@
   },
   "require-dev": {
     "wpackagist-theme/blockbase": "*",
-    "wpackagist-plugin/woocommerce": "*"
+    "wpackagist-plugin/woocommerce": "*",
+    "squizlabs/php_codesniffer": "3.*",
+    "wp-coding-standards/wpcs": "*",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2"
   },
 
   "scripts": {
-
+    "phpcs:lint": "phpcs",
+    "phpcs:fix": "phpcbf -p"
   },
+
   "config": {
     "allow-plugins": {
-      "composer/*": true
+      "composer/*": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
     }
   },
 
