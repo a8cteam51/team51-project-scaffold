@@ -51,7 +51,13 @@
 	"format:php:plugin": "phpcbf --standard=./mu-plugins/build-processes-demo-extra-functionality/.phpcs.xml ./mu-plugins/build-processes-demo-extra-functionality -v",
     "makepot": [
 			"wp i18n make-pot"
-		]
+		],
+    "makepot:theme": [
+      "@makepot themes/build-processes-demo themes/build-processes-demo/languages/build-processes-demo-theme.pot"
+    ],
+    "makepot:blocks": [
+      "@makepot mu-plugins/build-processes-demo-blocks mu-plugins/build-processes-demo-blocks/languages/build-processes-demo-blocks.pot --skip-block-json"
+    ]
   },
 
 	"lint:php": [
