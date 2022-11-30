@@ -14,14 +14,9 @@ Tags: demo, build process
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
+
 /**
  * Core
  * - Description of core styles
  */
-.wp-theme-style {
-  background-color: #21759b;
-  color: #fff;
-  padding: 2px;
-}
-
-/*# sourceMappingURL=style.css.map */
+@import "core/index";

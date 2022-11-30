@@ -12,7 +12,8 @@
   "devDependencies": {
     "@wordpress/browserslist-config": "^5.5.0",
     "@wordpress/scripts": "^24.6.0",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.56.1"
   },
   "browserslist": [
     "extends @wordpress/browserslist-config"
@@ -22,6 +23,11 @@
     "build:blocks": "wp-scripts build --webpack-src-dir=mu-plugins/$npm_package_name-blocks/src --output-path=mu-plugins/$npm_package_name-blocks/build",
 	"build:scripts:theme": "wp-scripts build --webpack-src-dir=themes/$npm_package_name/assets/js/src --output-path=themes/$npm_package_name/assets/js/build",
 	"build:scripts:plugin": "wp-scripts build --webpack-src-dir=mu-plugins/$npm_package_name-extra-functionality/assets/js/src --output-path=mu-plugins/$npm_package_name-extra-functionality/assets/js/build",
+	"build:theme-css": "sass themes/build-processes-demo/assets/scss/style.scss themes/build-processes-demo/style.css",
+	"build:theme-editor-css": "sass themes/build-processes-demo/assets/scss/style-editor.scss themes/build-processes-demo/assets/build/css/style-editor.css",
+	"start:theme": "sass --watch themes/build-processes-demo/assets/scss/style.scss themes/build-processes-demo/style.css",
+	"build:blocks": "wp-scripts build --webpack-src-dir=mu-plugins/$npm_package_name-blocks/src --output-path=mu-plugins/$npm_package_name-blocks/build",
+    "start:blocks": "wp-scripts start --webpack-src-dir=mu-plugins/$npm_package_name-blocks/src --output-path=mu-plugins/$npm_package_name-blocks/build",
     "format:scripts": "npm-run-all format:scripts:* --sequential",
     "format:scripts:theme": "wp-scripts format themes/$npm_package_name --no-error-on-unmatched-pattern",
     "format:scripts:mu-plugins": "wp-scripts format mu-plugins --no-error-on-unmatched-pattern",
