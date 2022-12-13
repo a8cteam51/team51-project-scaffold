@@ -39,8 +39,19 @@
   },
 
   "scripts": {
-	"format:php": "phpcbf -v",
-	"lint:php": "phpcs -v",
+	"format:php": [
+	  "@format:php:theme",
+	  "@format:php:blocks"
+	],
+	"format:php:theme": "phpcbf --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
+	"format:php:blocks": "phpcbf --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
+
+	"lint:php": [
+	  "@lint:php:theme",
+	  "@lint:php:blocks"
+	],
+	"lint:php:theme": "phpcs --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
+	"lint:php:blocks": "phpcs --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
 
 	"packages-update": "@composer update --prefer-stable --no-interaction"
   },

@@ -1,14 +1,24 @@
 <?php
 /**
- * Plugin Name:       Build Processes Demo Blocks
- * Description:       Example block scaffolded with Create Block tool.
- * Requires at least: 6.1
- * Requires PHP:      8.1
- * Version:           0.1.0
- * Author:            WP Special Projects
- * License:           GPL-3.0-or-later
- * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain:       build-processes-demo-blocks
+ * The Build Processes Demo blocks plugin bootstrap file.
+ *
+ * @since       0.1.0
+ * @version     0.1.0
+ * @author      WP Special Projects
+ * @license     GPL-3.0-or-later
+ *
+ * @wordpress-plugin
+ * Plugin Name:             Build Processes Demo Blocks
+ * Description:             Example block scaffolded with Create Block tool.
+ * Version:                 0.1.0
+ * Requires at least:       6.1
+ * Requires PHP:            8.1
+ * Author:                  WP Special Projects
+ * Author URI:              https://wpspecialprojects.wordpress.com/
+ * License:                 GPL-3.0-or-later
+ * License URI:             https://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain:             build-processes-demo-blocks
+ * Domain Path:             /languages
  */
 
 defined( 'ABSPATH' ) || exit;

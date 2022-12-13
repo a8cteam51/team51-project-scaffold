@@ -12,10 +12,10 @@
 defined( 'ABSPATH' ) || exit;
 
 // Include the rest of the theme functionality.
-foreach ( glob( get_stylesheet_directory() . '/includes/*.php' ) as $filename ) {
-	if ( preg_match( '#/includes/_#i', $filename ) ) {
+foreach ( glob( get_stylesheet_directory() . '/includes/*.php' ) as $bpd_filename ) {
+	if ( preg_match( '#/includes/_#i', $bpd_filename ) ) {
 		continue; // Ignore files prefixed with an underscore.
 	}
 
-	include $filename;
+	include $bpd_filename;
 }
