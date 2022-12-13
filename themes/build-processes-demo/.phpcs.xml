@@ -9,7 +9,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="build-processes-demo"/> <!-- Change this value to your theme or plugin slug. You can add multiple entries. -->
+				<element value="build-processes-demo"/> <!-- Change this value to your theme slug. -->
 			</property>
 		</properties>
 	</rule>
@@ -18,8 +18,8 @@
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
-				<element value="build_processes_demo"/> <!-- Change this value to your theme or plugin prefix. -->
-				<element value="bpd"/> <!-- Change this value to your theme or plugin prefix. -->
+				<element value="build_processes_demo"/> <!-- Change this value to your theme prefix. -->
+				<element value="bpd"/> <!-- Change this value to your theme prefix. -->
 			</property>
 		</properties>
 	</rule>

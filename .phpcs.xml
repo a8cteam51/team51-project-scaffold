@@ -12,5 +12,27 @@
 	<exclude-pattern>mu-plugins/colophon</exclude-pattern>
 	<exclude-pattern>mu-plugins/wc-usage-tracking-auto-opt-in</exclude-pattern>
 
+	<!-- Check that the proper text domain(s) is used everywhere. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="build-processes-demo"/> <!-- Change this value to your theme. -->
+				<element value="build-processes-demo-blocks"/> <!-- Change this value to your plugin slug. -->
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Check that the proper prefix is used everywhere. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="build_processes_demo"/> <!-- Change this value to your theme or plugin prefix. -->
+				<element value="bpd"/> <!-- Change this value to your theme or plugin prefix. -->
+				<element value="build_processes_demo_blocks"/> <!-- Change this value to your theme or plugin prefix. -->
+				<element value="bpd_blocks"/> <!-- Change this value to your theme or plugin prefix. -->
+			</property>
+		</properties>
+	</rule>
+
 	<!-- Add any other custom rulesets here. -->
 </ruleset>
