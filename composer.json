@@ -31,8 +31,8 @@
   },
 
   "scripts": {
-    "phpcs:lint": "phpcs",
-    "phpcs:fix": "phpcbf -p"
+	"format:php": "phpcbf -v",
+	"lint:php": "phpcs -v",
   },
 
   "config": {
