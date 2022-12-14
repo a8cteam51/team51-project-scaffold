@@ -1,15 +1,16 @@
 <?php
 /**
- * This file is for loading all mu-plugins within subfolders
- * where the PHP file name is exactly like the directory name + .php.
+ * By default, WordPress will load all files in the mu-plugins directory and ignore all the directories inside.
  *
- * Example: /mu-tools/mu-tools.php
+ * This file is a workaround which will load all the plugins in the mu-plugins directory which follow the naming
+ * convention of `plugin-name/plugin-name.php`.
  */
 
-$dirs = glob( dirname( __FILE__ ) . '/*' , GLOB_ONLYDIR );
+defined( 'ABSPATH' ) || exit;
 
-foreach ( $dirs as $dir ) {
-	if ( file_exists( $dir . DIRECTORY_SEPARATOR . basename( $dir ) . '.php' ) ) {
-		require_once $dir . DIRECTORY_SEPARATOR . basename( $dir ) . '.php';
+foreach ( glob( __DIR__ . '/*', GLOB_ONLYDIR ) as $bpd_mu_plugin_dir ) {
+	$bpd_plugin = $bpd_mu_plugin_dir . DIRECTORY_SEPARATOR . basename( $bpd_mu_plugin_dir ) . '.php';
+	if ( file_exists( $bpd_plugin ) ) {
+		require_once $bpd_plugin;
 	}
 }

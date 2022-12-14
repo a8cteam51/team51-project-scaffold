@@ -15,24 +15,51 @@
   "repositories": [
     {
       "type": "composer",
-      "url": "https://wpackagist.org"
+      "url": "https://wpackagist.org",
+	  "only": [
+		"wpackagist-plugin/*",
+		"wpackagist-theme/*"
+	  ]
     }
   ],
   "require": {
-    "php": ">=7.4 || >=8.1",
+	"php": ">=7.4",
     "ext-json": "*"
   },
   "require-dev": {
     "wpackagist-theme/blockbase": "*",
-    "wpackagist-plugin/woocommerce": "*"
+    "wpackagist-plugin/woocommerce": "*",
+
+	"squizlabs/php_codesniffer": "3.*",
+	"dealerdirect/phpcodesniffer-composer-installer": "*",
+	"phpcompatibility/phpcompatibility-wp": "*",
+    "wp-coding-standards/wpcs": "*",
+
+	"roave/security-advisories": "dev-latest"
   },
 
   "scripts": {
+	"format:php": [
+	  "@format:php:theme",
+	  "@format:php:blocks"
+	],
+	"format:php:theme": "phpcbf --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
+	"format:php:blocks": "phpcbf --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
 
+	"lint:php": [
+	  "@lint:php:theme",
+	  "@lint:php:blocks"
+	],
+	"lint:php:theme": "phpcs --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
+	"lint:php:blocks": "phpcs --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
+
+	"packages-install": "@composer install --ignore-platform-reqs --no-interaction",
+	"packages-update": "@composer update --prefer-stable --no-interaction"
   },
   "config": {
     "allow-plugins": {
-      "composer/*": true
+      "composer/*": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
     }
   },
 
