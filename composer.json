@@ -16,14 +16,14 @@
     {
       "type": "composer",
       "url": "https://wpackagist.org",
-	  "only": [
-		"wpackagist-plugin/*",
-		"wpackagist-theme/*"
-	  ]
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
     }
   ],
   "require": {
-	"php": ">=7.4",
+    "php": ">=7.4",
     "ext-json": "*"
   },
   "require-dev": {
@@ -33,10 +33,15 @@
 	"squizlabs/php_codesniffer": "3.*",
 	"dealerdirect/phpcodesniffer-composer-installer": "*",
 	"phpcompatibility/phpcompatibility-wp": "*",
+    "squizlabs/php_codesniffer": "3.*",
+    "dealerdirect/phpcodesniffer-composer-installer": "*",
+    "phpcompatibility/phpcompatibility-wp": "*",
     "wp-coding-standards/wpcs": "*",
 
 	"roave/security-advisories": "dev-latest"
     "wpackagist-plugin/woocommerce": "*",
+    "wp-cli/i18n-command": "^2.4"
+    "roave/security-advisories": "dev-latest",
     "wp-cli/i18n-command": "^2.4"
   },
 
@@ -59,18 +64,36 @@
       "@makepot mu-plugins/build-processes-demo-blocks mu-plugins/build-processes-demo-blocks/languages/build-processes-demo-blocks.pot --skip-block-json"
     ]
   },
+    "format:php": [
+      "@format:php:theme",
+      "@format:php:blocks",
+      "@format:php:plugin"
+    ],
+    "format:php:theme": "phpcbf --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
+    "format:php:blocks": "phpcbf --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
+    "format:php:plugin": "phpcbf --standard=./mu-plugins/build-processes-demo-extra-functionality/.phpcs.xml ./mu-plugins/build-processes-demo-extra-functionality -v",
 
-	"lint:php": [
-	  "@lint:php:theme",
-	  "@lint:php:blocks",
-	  "@lint:php:plugin"
-	],
-	"lint:php:theme": "phpcs --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
-	"lint:php:blocks": "phpcs --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
-	"lint:php:plugin": "phpcs --standard=./mu-plugins/build-processes-demo-extra-functionality/.phpcs.xml ./mu-plugins/build-processes-demo-extra-functionality -v",
+    "lint:php": [
+      "@lint:php:theme",
+      "@lint:php:blocks",
+      "@lint:php:plugin"
+    ],
+    "lint:php:theme": "phpcs --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
+    "lint:php:blocks": "phpcs --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
+    "lint:php:plugin": "phpcs --standard=./mu-plugins/build-processes-demo-extra-functionality/.phpcs.xml ./mu-plugins/build-processes-demo-extra-functionality -v",
 
-	"packages-install": "@composer install --ignore-platform-reqs --no-interaction",
-	"packages-update": "@composer update --prefer-stable --no-interaction"
+    "packages-install": "@composer install --ignore-platform-reqs --no-interaction",
+    "packages-update": "@composer update --prefer-stable --no-interaction",
+
+    "makepot": [
+      "@makepot:theme",
+      "@makepot:blocks"
+    ],
+    "makepot:theme": "wp i18n make-pot themes/build-processes-demo",
+    "makepot:blocks": [
+      "wp i18n make-pot mu-plugins/build-processes-demo-blocks",
+      "wp i18n make-pot mu-plugins/build-processes-demo-extra-functionality"
+    ]
   },
   "config": {
     "allow-plugins": {
