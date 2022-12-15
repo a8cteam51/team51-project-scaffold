@@ -19,3 +19,12 @@ foreach ( glob( get_stylesheet_directory() . '/includes/*.php' ) as $bpd_filenam
 
 	include $bpd_filename;
 }
+
+/**
+ * Set up Build Processes Demo Theme textdomain.
+ */
+function build_processes_demo_theme_setup() {
+	load_child_theme_textdomain( 'build-processes-demo', get_stylesheet_directory() . '/languages' );
+}
+
+add_action( 'after_setup_theme', 'build_processes_demo_theme_setup' );
