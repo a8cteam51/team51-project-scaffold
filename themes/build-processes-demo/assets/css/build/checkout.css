@@ -1,0 +1,8 @@
+/**
+ * These styles should be only loaded on the checkout page
+ */
+.wp-checkout-style {
+  background-color: #21759b;
+}
+
+/*# sourceMappingURL=checkout.css.map */
