@@ -33,5 +33,9 @@ defined( 'ABSPATH' ) || exit;
 function build_processes_demo_blocks_init(): void {
 	register_block_type( __DIR__ . '/build/foobar' );
 	register_block_type( __DIR__ . '/build/spamham' );
+
+	wp_set_script_translations( 'build-processes-demo-foobar-editor-script', 'build-processes-demo-blocks', plugin_dir_path( __FILE__ ) . '/languages' );
+	wp_set_script_translations( 'build-processes-demo-spamham-editor-script', 'build-processes-demo-blocks', plugin_dir_path( __FILE__ ) . '/languages' );
 }
+
 add_action( 'init', 'build_processes_demo_blocks_init' );
