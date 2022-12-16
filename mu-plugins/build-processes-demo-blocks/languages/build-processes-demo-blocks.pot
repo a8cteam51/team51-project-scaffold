@@ -1,0 +1,68 @@
+# Copyright (C) 2022 WP Special Projects
+# This file is distributed under the GPL-3.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Build Processes Demo Blocks 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/build-processes-demo-blocks\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-12-16T01:48:48+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: build-processes-demo-blocks\n"
+
+#. Plugin Name of the plugin
+msgid "Build Processes Demo Blocks"
+msgstr ""
+
+#. Description of the plugin
+msgid "Example block scaffolded with Create Block tool."
+msgstr ""
+
+#. Author of the plugin
+msgid "WP Special Projects"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://wpspecialprojects.wordpress.com/"
+msgstr ""
+
+#: build/foobar/index.js:1
+#: build/spamham/index.js:1
+#: src/foobar/edit.js:35
+#: src/spamham/edit.js:35
+msgid "Todo List – hello from the editor!"
+msgstr ""
+
+#: build/foobar/index.js:1
+#: src/foobar/save.js:28
+msgid "Todo List – hello from the saved content from foobar!"
+msgstr ""
+
+#: build/spamham/index.js:1
+#: src/spamham/save.js:28
+msgid "Todo List – hello from the saved content from spamham!"
+msgstr ""
+
+#: build/foobar/block.json
+#: src/foobar/block.json
+msgctxt "block title"
+msgid "FooBar Block"
+msgstr ""
+
+#: build/foobar/block.json
+#: build/spamham/block.json
+#: src/foobar/block.json
+#: src/spamham/block.json
+msgctxt "block description"
+msgid "Example block scaffolded with Create Block tool."
+msgstr ""
+
+#: build/spamham/block.json
+#: src/spamham/block.json
+msgctxt "block title"
+msgid "SpamHam Block"
+msgstr ""
