@@ -30,40 +30,17 @@
     "wpackagist-theme/blockbase": "*",
     "wpackagist-plugin/woocommerce": "*",
 
-	"squizlabs/php_codesniffer": "3.*",
-	"dealerdirect/phpcodesniffer-composer-installer": "*",
-	"phpcompatibility/phpcompatibility-wp": "*",
+    "wp-cli/i18n-command": "^2.4",
+
     "squizlabs/php_codesniffer": "3.*",
     "dealerdirect/phpcodesniffer-composer-installer": "*",
     "phpcompatibility/phpcompatibility-wp": "*",
     "wp-coding-standards/wpcs": "*",
 
-	"roave/security-advisories": "dev-latest"
-    "wpackagist-plugin/woocommerce": "*",
-    "wp-cli/i18n-command": "^2.4"
-    "roave/security-advisories": "dev-latest",
-    "wp-cli/i18n-command": "^2.4"
+    "roave/security-advisories": "dev-latest"
   },
 
   "scripts": {
-	"format:php": [
-	  "@format:php:theme",
-	  "@format:php:blocks",
-	  "@format:php:plugin"
-	],
-	"format:php:theme": "phpcbf --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
-	"format:php:blocks": "phpcbf --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
-	"format:php:plugin": "phpcbf --standard=./mu-plugins/build-processes-demo-extra-functionality/.phpcs.xml ./mu-plugins/build-processes-demo-extra-functionality -v",
-    "makepot": [
-			"wp i18n make-pot"
-		],
-    "makepot:theme": [
-      "@makepot themes/build-processes-demo themes/build-processes-demo/languages/build-processes-demo-theme.pot"
-    ],
-    "makepot:blocks": [
-      "@makepot mu-plugins/build-processes-demo-blocks mu-plugins/build-processes-demo-blocks/languages/build-processes-demo-blocks.pot --skip-block-json"
-    ]
-  },
     "format:php": [
       "@format:php:theme",
       "@format:php:blocks",
