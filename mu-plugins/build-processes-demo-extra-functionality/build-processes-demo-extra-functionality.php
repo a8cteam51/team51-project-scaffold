@@ -22,3 +22,11 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+require_once __DIR__ . '/includes/build-processes-demo-post-types.php';
+
+function bpd_extra_functionality_wpdocs_load_textdomain() {
+	load_muplugin_textdomain( 'build-processes-demo-extra-functionality', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+
+add_action( 'muplugins_loaded', 'bpd_extra_functionality_wpdocs_load_textdomain' );
