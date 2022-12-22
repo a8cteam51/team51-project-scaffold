@@ -65,11 +65,11 @@
     "makepot": [
       "@makepot:theme",
       "@makepot:blocks",
-      "@makepot:plugins"
+      "@makepot:plugin"
     ],
     "makepot:theme": "wp i18n make-pot themes/build-processes-demo",
     "makepot:blocks": "wp i18n make-pot mu-plugins/build-processes-demo-blocks",
-    "makepot:plugins": "wp i18n make-pot mu-plugins/build-processes-demo-extra-functionality",
+    "makepot:plugin": "wp i18n make-pot mu-plugins/build-processes-demo-extra-functionality",
 
     "makejson": [
       "wp i18n make-json mu-plugins/build-processes-demo-blocks/languages --no-purge"
