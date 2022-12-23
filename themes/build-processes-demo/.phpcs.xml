@@ -9,7 +9,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="build-processes-demo"/> <!-- Change this value to your theme slug. -->
+				<element value="build-processes-demo-theme"/> <!-- Change this value to your theme slug. -->
 			</property>
 		</properties>
 	</rule>

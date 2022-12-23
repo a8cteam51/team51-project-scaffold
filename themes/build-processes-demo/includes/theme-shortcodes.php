@@ -1,12 +1,13 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Simple shortcode to output a string.
  *
  * @return string
  */
-function build_processes_demo_translatable_string() {
-	return __( 'This string can be translated!', 'build-processes-demo' );
+function bpd_sc_translatable_string(): string {
+	return __( 'This string can be translated!', 'build-processes-demo-theme' );
 }
-
-add_shortcode( 'translate-string', 'build_processes_demo_translatable_string' );
+add_shortcode( 'translate-string', 'bpd_sc_translatable_string' );

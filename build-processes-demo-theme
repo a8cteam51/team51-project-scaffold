@@ -9,10 +9,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-12-15T21:45:23+00:00\n"
+"POT-Creation-Date: 2022-12-23T09:51:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
-"X-Domain: build-processes-demo\n"
+"X-Domain: build-processes-demo-theme\n"
 
 #. Theme Name of the theme
 msgid "Build Processes Demo Theme"
@@ -34,6 +34,6 @@ msgstr ""
 msgid "https://wpspecialprojects.wordpress.com"
 msgstr ""
 
-#: includes/theme-shortcodes.php:9
+#: includes/theme-shortcodes.php:11
 msgid "This string can be translated!"
 msgstr ""
