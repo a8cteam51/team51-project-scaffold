@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 function bpd_load_theme_textdomain(): void {
 	load_child_theme_textdomain( 'build-processes-demo', get_stylesheet_directory() . '/languages' );
 }
-add_action( 'after_setup_theme', 'bpd_load_theme_textdomain' );
+add_action( 'init', 'bpd_load_theme_textdomain' );
 
 // Include the rest of the theme functionality.
 foreach ( glob( get_stylesheet_directory() . '/includes/*.php' ) as $bpd_filename ) {
