@@ -8,6 +8,6 @@ defined( 'ABSPATH' ) || exit;
  * @return string
  */
 function bpd_sc_translatable_string(): string {
-	return __( 'This string can be translated!', 'build-processes-demo-theme' );
+	return __( 'This string can be translated!', 'build-processes-demo' );
 }
 add_shortcode( 'translate-string', 'bpd_sc_translatable_string' );

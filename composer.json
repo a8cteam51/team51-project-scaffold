@@ -67,7 +67,7 @@
       "@makepot:blocks",
       "@makepot:plugin"
     ],
-    "makepot:theme": "wp i18n make-pot themes/build-processes-demo --slug=build-processes-demo-theme",
+    "makepot:theme": "wp i18n make-pot themes/build-processes-demo",
     "makepot:blocks": "wp i18n make-pot mu-plugins/build-processes-demo-blocks",
     "makepot:plugin": "wp i18n make-pot mu-plugins/build-processes-demo-extra-functionality",
 
