@@ -30,7 +30,7 @@ function bpd_ef_load_textdomain() {
 add_action( 'init', 'bpd_ef_load_textdomain' );
 
 // Load the extra functionality plugin's files.
-foreach ( glob( get_stylesheet_directory() . '/includes/*.php' ) as $bpd_ef_filename ) {
+foreach ( glob( __DIR__ . '/includes/*.php' ) as $bpd_ef_filename ) {
 	if ( preg_match( '#/includes/_#i', $bpd_ef_filename ) ) {
 		continue; // Ignore files prefixed with an underscore.
 	}
