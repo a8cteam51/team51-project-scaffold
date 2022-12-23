@@ -20,6 +20,7 @@
 			<property name="prefixes" type="array">
 				<element value="build_processes_demo_extra_functionality"/> <!-- Change this value to your plugin prefix. -->
 				<element value="bpd_extra_functionality"/> <!-- Change this value to your plugin prefix. -->
+				<element value="bpd_ef"/> <!-- Change this value to your plugin prefix. -->
 			</property>
 		</properties>
 	</rule>

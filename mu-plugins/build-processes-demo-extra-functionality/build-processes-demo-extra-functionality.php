@@ -22,3 +22,18 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+// Load the extra functionality plugin's translated strings.
+function bpd_ef_load_textdomain() {
+	load_muplugin_textdomain( 'build-processes-demo-extra-functionality', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+add_action( 'init', 'bpd_ef_load_textdomain' );
+
+// Load the extra functionality plugin's files.
+foreach ( glob( get_stylesheet_directory() . '/includes/*.php' ) as $bpd_ef_filename ) {
+	if ( preg_match( '#/includes/_#i', $bpd_ef_filename ) ) {
+		continue; // Ignore files prefixed with an underscore.
+	}
+
+	include $bpd_ef_filename;
+}

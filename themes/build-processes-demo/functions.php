@@ -11,6 +11,12 @@
 
 defined( 'ABSPATH' ) || exit;
 
+// Load the theme's translated strings.
+function bpd_load_theme_textdomain(): void {
+	load_child_theme_textdomain( 'build-processes-demo', get_stylesheet_directory() . '/languages' );
+}
+add_action( 'init', 'bpd_load_theme_textdomain' );
+
 // Include the rest of the theme functionality.
 foreach ( glob( get_stylesheet_directory() . '/includes/*.php' ) as $bpd_filename ) {
 	if ( preg_match( '#/includes/_#i', $bpd_filename ) ) {

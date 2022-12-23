@@ -16,49 +16,76 @@
     {
       "type": "composer",
       "url": "https://wpackagist.org",
-	  "only": [
-		"wpackagist-plugin/*",
-		"wpackagist-theme/*"
-	  ]
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
     }
   ],
   "require": {
-	"php": ">=7.4",
+    "php": ">=7.4",
     "ext-json": "*"
   },
   "require-dev": {
     "wpackagist-theme/blockbase": "*",
     "wpackagist-plugin/woocommerce": "*",
 
-	"squizlabs/php_codesniffer": "3.*",
-	"dealerdirect/phpcodesniffer-composer-installer": "*",
-	"phpcompatibility/phpcompatibility-wp": "*",
+    "wp-cli/i18n-command": "^2.4",
+
+    "squizlabs/php_codesniffer": "3.*",
+    "dealerdirect/phpcodesniffer-composer-installer": "*",
+    "phpcompatibility/phpcompatibility-wp": "*",
     "wp-coding-standards/wpcs": "*",
 
-	"roave/security-advisories": "dev-latest"
+    "roave/security-advisories": "dev-latest"
   },
 
   "scripts": {
-	"format:php": [
-	  "@format:php:theme",
-	  "@format:php:blocks",
-	  "@format:php:plugin"
-	],
-	"format:php:theme": "phpcbf --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
-	"format:php:blocks": "phpcbf --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
-	"format:php:plugin": "phpcbf --standard=./mu-plugins/build-processes-demo-extra-functionality/.phpcs.xml ./mu-plugins/build-processes-demo-extra-functionality -v",
+    "format:php": [
+      "@format:php:theme",
+      "@format:php:blocks",
+      "@format:php:plugin"
+    ],
+    "format:php:theme": "phpcbf --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
+    "format:php:blocks": "phpcbf --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
+    "format:php:plugin": "phpcbf --standard=./mu-plugins/build-processes-demo-extra-functionality/.phpcs.xml ./mu-plugins/build-processes-demo-extra-functionality -v",
 
-	"lint:php": [
-	  "@lint:php:theme",
-	  "@lint:php:blocks",
-	  "@lint:php:plugin"
-	],
-	"lint:php:theme": "phpcs --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
-	"lint:php:blocks": "phpcs --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
-	"lint:php:plugin": "phpcs --standard=./mu-plugins/build-processes-demo-extra-functionality/.phpcs.xml ./mu-plugins/build-processes-demo-extra-functionality -v",
+    "lint:php": [
+      "@lint:php:theme",
+      "@lint:php:blocks",
+      "@lint:php:plugin"
+    ],
+    "lint:php:theme": "phpcs --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
+    "lint:php:blocks": "phpcs --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
+    "lint:php:plugin": "phpcs --standard=./mu-plugins/build-processes-demo-extra-functionality/.phpcs.xml ./mu-plugins/build-processes-demo-extra-functionality -v",
 
-	"packages-install": "@composer install --ignore-platform-reqs --no-interaction",
-	"packages-update": "@composer update --prefer-stable --no-interaction"
+    "internationalize": [
+      "@makepot:theme",
+      "@updatepo:theme",
+
+      "@makepot:blocks",
+      "@updatepo:blocks",
+      "@makejson:blocks",
+
+      "@makepot:plugin",
+      "@updatepo:plugin"
+    ],
+
+    "makepot:theme": "wp i18n make-pot themes/build-processes-demo",
+    "updatepo:theme": "wp i18n update-po themes/build-processes-demo/languages/build-processes-demo.pot",
+    "makemo:theme": "wp i18n make-mo themes/build-processes-demo/languages",
+
+    "makepot:blocks": "wp i18n make-pot mu-plugins/build-processes-demo-blocks",
+    "updatepo:blocks": "wp i18n update-po mu-plugins/build-processes-demo-blocks/languages/build-processes-demo-blocks.pot",
+    "makejson:blocks": "wp i18n make-json mu-plugins/build-processes-demo-blocks/languages --pretty-print --no-purge",
+    "makemo:blocks": "wp i18n make-mo mu-plugins/build-processes-demo-blocks/languages",
+
+    "makepot:plugin": "wp i18n make-pot mu-plugins/build-processes-demo-extra-functionality",
+    "updatepo:plugin": "wp i18n update-po mu-plugins/build-processes-demo-extra-functionality/languages/build-processes-demo-extra-functionality.pot",
+    "makemo:plugin": "wp i18n make-mo mu-plugins/build-processes-demo-extra-functionality/languages",
+
+    "packages-install": "@composer install --ignore-platform-reqs --no-interaction",
+    "packages-update": "@composer update --prefer-stable --no-interaction"
   },
   "config": {
     "allow-plugins": {

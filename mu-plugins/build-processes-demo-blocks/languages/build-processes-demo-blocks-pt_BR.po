@@ -1,0 +1,68 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Build Processes Demo Blocks 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/build-processes-demo-blocks\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-12-16T01:48:48+00:00\n"
+"PO-Revision-Date: 2022-12-15 22:53-0300\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Domain: build-processes-demo-blocks\n"
+
+#. Plugin Name of the plugin
+msgid "Build Processes Demo Blocks"
+msgstr "Blocos de demonstração de processos de build"
+
+#. Description of the plugin
+msgid "Example block scaffolded with Create Block tool."
+msgstr "Bloco de exemplo criado com o Create Block."
+
+#. Author of the plugin
+msgid "WP Special Projects"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://wpspecialprojects.wordpress.com/"
+msgstr ""
+
+#: build/foobar/index.js:1
+#: build/spamham/index.js:1
+#: src/foobar/edit.js:35
+#: src/spamham/edit.js:35
+msgid "Todo List – hello from the editor!"
+msgstr "Todo List – olá do editor!"
+
+#: build/foobar/index.js:1
+#: src/foobar/save.js:28
+msgid "Todo List – hello from the saved content from foobar!"
+msgstr "Todo List – olá do conteúdo salvo do foobar!"
+
+#: build/spamham/index.js:1
+#: src/spamham/save.js:28
+msgid "Todo List – hello from the saved content from spamham!"
+msgstr "Todo List – olá do conteúdo salvo do spamham!"
+
+#: build/foobar/block.json
+#: src/foobar/block.json
+msgctxt "block title"
+msgid "FooBar Block"
+msgstr "Bloco FooBar"
+
+#: build/foobar/block.json
+#: build/spamham/block.json
+#: src/foobar/block.json
+#: src/spamham/block.json
+msgctxt "block description"
+msgid "Example block scaffolded with Create Block tool."
+msgstr "Bloco de exemplo criado com o Create Block."
+
+#: build/spamham/block.json
+#: src/spamham/block.json
+msgctxt "block title"
+msgid "SpamHam Block"
+msgstr "Bloco SpamHam"
