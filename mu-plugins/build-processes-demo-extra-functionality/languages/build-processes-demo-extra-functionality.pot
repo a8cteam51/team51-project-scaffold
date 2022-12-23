@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-12-20T14:22:15+00:00\n"
+"POT-Creation-Date: 2022-12-23T09:59:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: build-processes-demo-extra-functionality\n"
@@ -30,60 +30,60 @@ msgstr ""
 msgid "https://wpspecialprojects.wordpress.com/"
 msgstr ""
 
-#: includes/build-processes-demo-post-types.php:6
+#: includes/custom-post-types.php:14
 msgctxt "Post Type General Name"
 msgid "Books"
 msgstr ""
 
-#: includes/build-processes-demo-post-types.php:7
+#: includes/custom-post-types.php:15
 msgid "Book"
 msgstr ""
 
-#: includes/build-processes-demo-post-types.php:8
+#: includes/custom-post-types.php:16
 msgctxt "Admin Menu text"
 msgid "Books"
 msgstr ""
 
-#: includes/build-processes-demo-post-types.php:9
+#: includes/custom-post-types.php:17
 msgid "All Books"
 msgstr ""
 
-#: includes/build-processes-demo-post-types.php:10
+#: includes/custom-post-types.php:18
 msgid "View Book"
 msgstr ""
 
-#: includes/build-processes-demo-post-types.php:11
+#: includes/custom-post-types.php:19
 msgid "Add New Book"
 msgstr ""
 
-#: includes/build-processes-demo-post-types.php:12
+#: includes/custom-post-types.php:20
 msgid "Add New"
 msgstr ""
 
-#: includes/build-processes-demo-post-types.php:13
+#: includes/custom-post-types.php:21
 msgid "Edit Book"
 msgstr ""
 
-#: includes/build-processes-demo-post-types.php:14
+#: includes/custom-post-types.php:22
 msgid "Update Book"
 msgstr ""
 
-#: includes/build-processes-demo-post-types.php:15
+#: includes/custom-post-types.php:23
 msgid "Search Book"
 msgstr ""
 
-#: includes/build-processes-demo-post-types.php:16
+#: includes/custom-post-types.php:24
 msgid "Not Found"
 msgstr ""
 
-#: includes/build-processes-demo-post-types.php:17
+#: includes/custom-post-types.php:25
 msgid "Not found in Trash"
 msgstr ""
 
-#: includes/build-processes-demo-post-types.php:22
+#: includes/custom-post-types.php:30
 msgid "Books"
 msgstr ""
 
-#: includes/build-processes-demo-post-types.php:23
+#: includes/custom-post-types.php:31
 msgid "Books catalogue"
 msgstr ""

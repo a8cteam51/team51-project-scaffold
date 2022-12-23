@@ -1,6 +1,14 @@
 <?php
 
-function bpd_extra_functionality_register_book_post_type() {
+defined( 'ABSPATH' ) || exit;
+
+/**
+ * Register custom post types.
+ *
+ * @since   0.1.0
+ * @version 0.1.0
+ */
+function bpd_ef_register_book_post_type(): void {
 	// Set UI labels for Custom Post Type
 	$labels = array(
 		'name'               => _x( 'Books', 'Post Type General Name', 'build-processes-demo-extra-functionality' ),
@@ -50,5 +58,4 @@ function bpd_extra_functionality_register_book_post_type() {
 
 	register_post_type( 'book', $args );
 }
-
-add_action( 'init', 'bpd_extra_functionality_register_book_post_type' );
+add_action( 'init', 'bpd_ef_register_book_post_type' );
