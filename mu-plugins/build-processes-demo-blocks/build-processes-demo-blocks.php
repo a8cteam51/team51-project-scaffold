@@ -35,7 +35,7 @@ function build_processes_demo_blocks_init(): void {
 	register_block_type( __DIR__ . '/build/spamham' );
 
 	load_muplugin_textdomain( 'build-processes-demo-blocks', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-	wp_set_script_translations( 'build-processes-demo-foobar-editor-script', 'build-processes-demo-blocks', plugin_dir_path( __FILE__ ) . '/languages' );
-	wp_set_script_translations( 'build-processes-demo-spamham-editor-script', 'build-processes-demo-blocks', plugin_dir_path( __FILE__ ) . '/languages' );
+	wp_set_script_translations( generate_block_asset_handle( 'build-processes-demo/foobar', 'editorScript' ), 'build-processes-demo-blocks', plugin_dir_path( __FILE__ ) . 'languages' );
+	wp_set_script_translations( generate_block_asset_handle( 'build-processes-demo/spamham', 'editorScript' ), 'build-processes-demo-blocks', plugin_dir_path( __FILE__ ) . 'languages' );
 }
 add_action( 'init', 'build_processes_demo_blocks_init' );
