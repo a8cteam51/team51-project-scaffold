@@ -22,11 +22,11 @@
     "build": "npm-run-all --parallel build:**",
     "build:blocks": "wp-scripts build --webpack-src-dir=mu-plugins/$npm_package_name-blocks/src --output-path=mu-plugins/$npm_package_name-blocks/build",
     "build:scripts:theme": "wp-scripts build --webpack-src-dir=themes/$npm_package_name/assets/js/src --output-path=themes/$npm_package_name/assets/js/build",
-    "build:scripts:plugin": "wp-scripts build --webpack-src-dir=mu-plugins/$npm_package_name-extra-functionality/assets/js/src --output-path=mu-plugins/$npm_package_name-extra-functionality/assets/js/build",
+    "build:scripts:plugin": "wp-scripts build --webpack-src-dir=mu-plugins/$npm_package_name-features/assets/js/src --output-path=mu-plugins/$npm_package_name-features/assets/js/build",
     "build:styles:theme": "sass themes/$npm_package_name/assets/css/src:themes/$npm_package_name/assets/css/build",
     "build:styles:theme-stylesheet": "sass themes/$npm_package_name/assets/scss/style.scss themes/$npm_package_name/style.css",
     "build:styles:theme-editor": "sass themes/$npm_package_name/assets/scss/style-editor.scss themes/$npm_package_name/style-editor.css",
-    "build:styles:plugin": "sass mu-plugins/$npm_package_name-extra-functionality/assets/css/src:mu-plugins/$npm_package_name-extra-functionality/assets/css/build",
+    "build:styles:plugin": "sass mu-plugins/$npm_package_name-features/assets/css/src:mu-plugins/$npm_package_name-features/assets/css/build",
     "format:scripts": "npm-run-all --sequential format:scripts:** ",
     "format:scripts:theme": "wp-scripts format themes/$npm_package_name --no-error-on-unmatched-pattern",
     "format:scripts:mu-plugins": "wp-scripts format mu-plugins --no-error-on-unmatched-pattern",
@@ -47,10 +47,10 @@
     "start": "npm-run-all --parallel start:**",
     "start:blocks": "wp-scripts start --webpack-src-dir=mu-plugins/$npm_package_name-blocks/src --output-path=mu-plugins/$npm_package_name-blocks/build",
     "start:scripts:theme": "wp-scripts start --webpack-src-dir=themes/$npm_package_name/assets/js/src --output-path=themes/$npm_package_name/assets/js/build",
-    "start:scripts:plugin": "wp-scripts start --webpack-src-dir=mu-plugins/$npm_package_name-extra-functionality/assets/js/src --output-path=mu-plugins/$npm_package_name-extra-functionality/assets/js/build",
+    "start:scripts:plugin": "wp-scripts start --webpack-src-dir=mu-plugins/$npm_package_name-features/assets/js/src --output-path=mu-plugins/$npm_package_name-features/assets/js/build",
     "start:styles:theme": "sass --watch themes/$npm_package_name/assets/css/src:themes/$npm_package_name/assets/css/build",
     "start:styles:theme-stylesheet": "sass --watch themes/$npm_package_name/assets/scss/style.scss themes/$npm_package_name/style.css",
     "start:styles:theme-editor": "sass --watch themes/$npm_package_name/assets/scss/style-editor.scss themes/$npm_package_name/style-editor.css",
-    "start:styles:plugin": "sass --watch mu-plugins/$npm_package_name-extra-functionality/assets/css/src:mu-plugins/$npm_package_name-extra-functionality/assets/css/build"
+    "start:styles:plugin": "sass --watch mu-plugins/$npm_package_name-features/assets/css/src:mu-plugins/$npm_package_name-features/assets/css/build"
   }
 }
