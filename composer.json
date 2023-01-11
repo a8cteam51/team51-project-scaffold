@@ -81,7 +81,7 @@
     "makemo:blocks": "wp i18n make-mo mu-plugins/build-processes-demo-blocks/languages",
 
     "makepot:plugin": "wp i18n make-pot mu-plugins/build-processes-demo-features",
-    "updatepo:plugin": "wp i18n update-po mu-plugins/build-processes-demo-features/languages/build-processes-demo-extra-functionality.pot",
+    "updatepo:plugin": "wp i18n update-po mu-plugins/build-processes-demo-features/languages/build-processes-demo-features.pot",
     "makemo:plugin": "wp i18n make-mo mu-plugins/build-processes-demo-features/languages",
 
     "packages-install": "@composer install --ignore-platform-reqs --no-interaction",

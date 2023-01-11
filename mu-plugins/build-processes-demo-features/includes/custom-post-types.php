@@ -8,27 +8,27 @@ defined( 'ABSPATH' ) || exit;
  * @since   0.1.0
  * @version 0.1.0
  */
-function bpd_ef_register_book_post_type(): void {
+function bpd_features_register_book_post_type(): void {
 	// Set UI labels for Custom Post Type
 	$labels = array(
-		'name'               => _x( 'Books', 'Post Type General Name', 'build-processes-demo-extra-functionality' ),
-		'singular_name'      => __( 'Book', 'build-processes-demo-extra-functionality' ),
-		'menu_name'          => _x( 'Books', 'Admin Menu text', 'build-processes-demo-extra-functionality' ),
-		'all_items'          => __( 'All Books', 'build-processes-demo-extra-functionality' ),
-		'view_item'          => __( 'View Book', 'build-processes-demo-extra-functionality' ),
-		'add_new_item'       => __( 'Add New Book', 'build-processes-demo-extra-functionality' ),
-		'add_new'            => __( 'Add New', 'build-processes-demo-extra-functionality' ),
-		'edit_item'          => __( 'Edit Book', 'build-processes-demo-extra-functionality' ),
-		'update_item'        => __( 'Update Book', 'build-processes-demo-extra-functionality' ),
-		'search_items'       => __( 'Search Book', 'build-processes-demo-extra-functionality' ),
-		'not_found'          => __( 'Not Found', 'build-processes-demo-extra-functionality' ),
-		'not_found_in_trash' => __( 'Not found in Trash', 'build-processes-demo-extra-functionality' ),
+		'name'               => _x( 'Books', 'Post Type General Name', 'build-processes-demo-features' ),
+		'singular_name'      => __( 'Book', 'build-processes-demo-features' ),
+		'menu_name'          => _x( 'Books', 'Admin Menu text', 'build-processes-demo-features' ),
+		'all_items'          => __( 'All Books', 'build-processes-demo-features' ),
+		'view_item'          => __( 'View Book', 'build-processes-demo-features' ),
+		'add_new_item'       => __( 'Add New Book', 'build-processes-demo-features' ),
+		'add_new'            => __( 'Add New', 'build-processes-demo-features' ),
+		'edit_item'          => __( 'Edit Book', 'build-processes-demo-features' ),
+		'update_item'        => __( 'Update Book', 'build-processes-demo-features' ),
+		'search_items'       => __( 'Search Book', 'build-processes-demo-features' ),
+		'not_found'          => __( 'Not Found', 'build-processes-demo-features' ),
+		'not_found_in_trash' => __( 'Not found in Trash', 'build-processes-demo-features' ),
 	);
 
 	// Set other options for Custom Post Type
 	$args = array(
-		'label'               => __( 'Books', 'build-processes-demo-extra-functionality' ),
-		'description'         => __( 'Books catalogue', 'build-processes-demo-extra-functionality' ),
+		'label'               => __( 'Books', 'build-processes-demo-features' ),
+		'description'         => __( 'Books catalogue', 'build-processes-demo-features' ),
 		'labels'              => $labels,
 		'supports'            => array(
 			'title',
@@ -58,4 +58,4 @@ function bpd_ef_register_book_post_type(): void {
 
 	register_post_type( 'book', $args );
 }
-add_action( 'init', 'bpd_ef_register_book_post_type' );
+add_action( 'init', 'bpd_features_register_book_post_type' );

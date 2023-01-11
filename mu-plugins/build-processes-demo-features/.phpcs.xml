@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="build-processes-demo-extra-functionality" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../vendor/squizlabs/php_codesniffer/phpcs.xsd">
-	<description>Custom ruleset for the Build Processes Demo site extra functionality.</description>
+	<description>Custom ruleset for the Build Processes Demo site features.</description>
 
 	<!-- Extend the A8CTeam51 ruleset. -->
 	<rule ref="../../.phpcs.xml.dist"/>
@@ -9,7 +9,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="build-processes-demo-extra-functionality"/> <!-- Change this value to your plugin slug. -->
+				<element value="build-processes-demo-features"/> <!-- Change this value to your plugin slug. -->
 			</property>
 		</properties>
 	</rule>
@@ -18,9 +18,8 @@
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
-				<element value="build_processes_demo_extra_functionality"/> <!-- Change this value to your plugin prefix. -->
-				<element value="bpd_extra_functionality"/> <!-- Change this value to your plugin prefix. -->
-				<element value="bpd_ef"/> <!-- Change this value to your plugin prefix. -->
+				<element value="build_processes_demo_features"/> <!-- Change this value to your plugin prefix. -->
+				<element value="bpd_features"/> <!-- Change this value to your plugin prefix. -->
 			</property>
 		</properties>
 	</rule>

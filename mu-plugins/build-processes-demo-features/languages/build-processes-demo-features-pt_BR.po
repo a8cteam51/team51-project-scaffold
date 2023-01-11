@@ -1,26 +1,18 @@
-# Copyright (C) 2022 WP Special Projects
-# This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Build Processes Demo Extra Functionality 0.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/build-processes-demo-extra-functionality\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-12-23T10:12:44+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.7.1\n"
+"POT-Creation-Date: 2022-12-20T14:22:15+00:00\n"
+"PO-Revision-Date: 2022-12-20 11:24-0300\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Domain: build-processes-demo-extra-functionality\n"
-
-#. Plugin Name of the plugin
-msgid "Build Processes Demo Extra Functionality"
-msgstr ""
-
-#. Description of the plugin
-msgid "An extra functionality plugin for a custom theme. Could include post types, metaboxes etc. Do not use for blocks!"
-msgstr ""
 
 #. Author of the plugin
 msgid "WP Special Projects"
@@ -33,57 +25,65 @@ msgstr ""
 #: includes/custom-post-types.php:14
 msgctxt "Post Type General Name"
 msgid "Books"
-msgstr ""
+msgstr "Livros"
 
 #: includes/custom-post-types.php:15
 msgid "Book"
-msgstr ""
+msgstr "Livro"
 
 #: includes/custom-post-types.php:16
 msgctxt "Admin Menu text"
 msgid "Books"
-msgstr ""
+msgstr "Livros"
 
 #: includes/custom-post-types.php:17
 msgid "All Books"
-msgstr ""
+msgstr "Todos os Livros"
 
 #: includes/custom-post-types.php:18
 msgid "View Book"
-msgstr ""
+msgstr "Ver Livro"
 
 #: includes/custom-post-types.php:19
 msgid "Add New Book"
-msgstr ""
+msgstr "Adicionar Novo Livro"
 
 #: includes/custom-post-types.php:20
 msgid "Add New"
-msgstr ""
+msgstr "Adicionar Novo "
 
 #: includes/custom-post-types.php:21
 msgid "Edit Book"
-msgstr ""
+msgstr "Editar Livro"
 
 #: includes/custom-post-types.php:22
 msgid "Update Book"
-msgstr ""
+msgstr "Atualizar Livro"
 
 #: includes/custom-post-types.php:23
 msgid "Search Book"
-msgstr ""
+msgstr "Procurar Livro"
 
 #: includes/custom-post-types.php:24
 msgid "Not Found"
-msgstr ""
+msgstr "Não Encontrado"
 
 #: includes/custom-post-types.php:25
 msgid "Not found in Trash"
-msgstr ""
+msgstr "Não Encontrado na Lixeira"
 
 #: includes/custom-post-types.php:30
 msgid "Books"
-msgstr ""
+msgstr "Livros"
 
 #: includes/custom-post-types.php:31
 msgid "Books catalogue"
+msgstr "Catálogo de livros"
+
+#. Plugin Name of the plugin
+msgid "Build Processes Demo Features"
 msgstr ""
+
+#. Description of the plugin
+msgid "A features plugin for a custom theme. Could include post types, metaboxes etc. Do not use for blocks!"
+msgstr "Um plugin com funcionalidades extras para um tema customizado. Pode incluir post types, metaboxes etc. Não usar para blocos!"
