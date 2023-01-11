@@ -48,7 +48,7 @@
     ],
     "format:php:theme": "phpcbf --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
     "format:php:blocks": "phpcbf --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
-    "format:php:plugin": "phpcbf --standard=mu-plugins/build-processes-demo-features/.phpcs.xml ./mu-plugins/build-processes-demo-extra-functionality -v",
+    "format:php:plugin": "phpcbf --standard=mu-plugins/build-processes-demo-features/.phpcs.xml ./mu-plugins/build-processes-demo-features -v",
 
     "lint:php": [
       "@lint:php:theme",
@@ -57,7 +57,7 @@
     ],
     "lint:php:theme": "phpcs --standard=./themes/build-processes-demo/.phpcs.xml ./themes/build-processes-demo -v",
     "lint:php:blocks": "phpcs --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml ./mu-plugins/build-processes-demo-blocks -v",
-    "lint:php:plugin": "phpcs --standard=mu-plugins/build-processes-demo-features/.phpcs.xml ./mu-plugins/build-processes-demo-extra-functionality -v",
+    "lint:php:plugin": "phpcs --standard=mu-plugins/build-processes-demo-features/.phpcs.xml ./mu-plugins/build-processes-demo-features -v",
 
     "internationalize": [
       "@makepot:theme",

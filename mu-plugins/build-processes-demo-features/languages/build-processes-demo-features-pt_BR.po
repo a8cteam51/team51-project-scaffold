@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Build Processes Demo Extra Functionality 0.1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/build-processes-demo-extra-functionality\n"
+"Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.2.2\n"
-"X-Domain: build-processes-demo-extra-functionality\n"
+"X-Domain: build-processes-demo-features\n"
 
 #. Author of the plugin
 msgid "WP Special Projects"
