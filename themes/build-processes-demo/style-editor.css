@@ -9,6 +9,8 @@
   background-color: #21759b;
   color: #fff;
   padding: 2px;
+  -webkit-appearance: auto;
+          appearance: auto;
 }
 
 /*# sourceMappingURL=style-editor.css.map */

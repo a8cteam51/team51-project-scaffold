@@ -10,9 +10,11 @@
     "npm": ">=7.0"
   },
   "devDependencies": {
-    "@wordpress/browserslist-config": "^5.6.0",
-    "@wordpress/scripts": "^25.0.0",
+    "@wordpress/browserslist-config": "^5.7.0",
+    "@wordpress/postcss-plugins-preset": "^4.8.0",
+    "@wordpress/scripts": "^25.1.0",
     "npm-run-all": "^4.1.5",
+    "postcss-cli": "^10.1.0",
     "sass": "^1.56.1"
   },
   "browserslist": [
@@ -23,10 +25,10 @@
     "build:blocks": "wp-scripts build --webpack-src-dir=mu-plugins/$npm_package_name-blocks/src --output-path=mu-plugins/$npm_package_name-blocks/build",
     "build:scripts:theme": "wp-scripts build --webpack-src-dir=themes/$npm_package_name/assets/js/src --output-path=themes/$npm_package_name/assets/js/build",
     "build:scripts:plugin": "wp-scripts build --webpack-src-dir=mu-plugins/$npm_package_name-features/assets/js/src --output-path=mu-plugins/$npm_package_name-features/assets/js/build",
-    "build:styles:theme": "sass themes/$npm_package_name/assets/css/src:themes/$npm_package_name/assets/css/build",
-    "build:styles:theme-stylesheet": "sass themes/$npm_package_name/assets/scss/style.scss themes/$npm_package_name/style.css",
-    "build:styles:theme-editor": "sass themes/$npm_package_name/assets/scss/style-editor.scss themes/$npm_package_name/style-editor.css",
-    "build:styles:plugin": "sass mu-plugins/$npm_package_name-features/assets/css/src:mu-plugins/$npm_package_name-features/assets/css/build",
+    "build:styles:theme": "sass themes/$npm_package_name/assets/css/src:themes/$npm_package_name/assets/css/build && postcss themes/$npm_package_name/assets/css/build/**.css --dir themes/$npm_package_name/assets/css/build",
+    "build:styles:theme-stylesheet": "sass themes/$npm_package_name/assets/scss/style.scss themes/$npm_package_name/style.css && postcss -r themes/$npm_package_name/style.css",
+    "build:styles:theme-editor": "sass themes/$npm_package_name/assets/scss/style-editor.scss themes/$npm_package_name/style-editor.css && postcss -r themes/$npm_package_name/style-editor.css",
+    "build:styles:plugin": "sass mu-plugins/$npm_package_name-features/assets/css/src:mu-plugins/$npm_package_name-features/assets/css/build && postcss mu-plugins/$npm_package_name-features/assets/css/build/**.css --dir mu-plugins/$npm_package_name-features/assets/css/build",
     "format:scripts": "npm-run-all --sequential format:scripts:** ",
     "format:scripts:theme": "wp-scripts format themes/$npm_package_name --no-error-on-unmatched-pattern",
     "format:scripts:mu-plugins": "wp-scripts format mu-plugins --no-error-on-unmatched-pattern",
