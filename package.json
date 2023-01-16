@@ -15,7 +15,21 @@
     "@wordpress/scripts": "^25.1.0",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^10.1.0",
+    "rtlcss": "^4.0.0",
     "sass": "^1.56.1"
+  },
+  "rtlcssConfig": {
+    "options": {
+      "autoRename": false,
+      "autoRenameStrict": false,
+      "blacklist": {},
+      "clean": true,
+      "greedy": false,
+      "processUrls": false,
+      "stringMap": []
+    },
+    "plugins": [],
+    "map": false
   },
   "browserslist": [
     "extends @wordpress/browserslist-config"
@@ -27,6 +41,7 @@
     "build:scripts:plugin": "wp-scripts build --webpack-src-dir=mu-plugins/$npm_package_name-features/assets/js/src --output-path=mu-plugins/$npm_package_name-features/assets/js/build",
     "build:styles:theme": "sass themes/$npm_package_name/assets/css/src:themes/$npm_package_name/assets/css/build && postcss themes/$npm_package_name/assets/css/build/**.css --dir themes/$npm_package_name/assets/css/build",
     "build:styles:theme-stylesheet": "sass themes/$npm_package_name/assets/scss/style.scss themes/$npm_package_name/style.css && postcss -r themes/$npm_package_name/style.css",
+    "build:styles:theme-stylesheet-rtl": "rtlcss themes/$npm_package_name/style.css themes/$npm_package_name/style-rtl.css",
     "build:styles:theme-editor": "sass themes/$npm_package_name/assets/scss/style-editor.scss themes/$npm_package_name/style-editor.css && postcss -r themes/$npm_package_name/style-editor.css",
     "build:styles:plugin": "sass mu-plugins/$npm_package_name-features/assets/css/src:mu-plugins/$npm_package_name-features/assets/css/build && postcss mu-plugins/$npm_package_name-features/assets/css/build/**.css --dir mu-plugins/$npm_package_name-features/assets/css/build",
     "format:scripts": "npm-run-all --sequential format:scripts:** ",
