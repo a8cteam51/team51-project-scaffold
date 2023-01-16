@@ -65,9 +65,9 @@
     "start:blocks": "wp-scripts start --webpack-src-dir=mu-plugins/$npm_package_name-blocks/src --output-path=mu-plugins/$npm_package_name-blocks/build",
     "start:scripts:theme": "wp-scripts start --webpack-src-dir=themes/$npm_package_name/assets/js/src --output-path=themes/$npm_package_name/assets/js/build",
     "start:scripts:plugin": "wp-scripts start --webpack-src-dir=mu-plugins/$npm_package_name-features/assets/js/src --output-path=mu-plugins/$npm_package_name-features/assets/js/build",
-    "start:styles:theme": "sass --watch --embed-source-map themes/$npm_package_name/assets/css/src:themes/$npm_package_name/assets/css/build",
-    "start:styles:theme-stylesheet": "sass --watch --embed-source-map themes/$npm_package_name/assets/scss/style.scss themes/$npm_package_name/style.css",
-    "start:styles:theme-editor": "sass --watch --embed-source-map themes/$npm_package_name/assets/scss/style-editor.scss themes/$npm_package_name/style-editor.css",
-    "start:styles:plugin": "sass --watch --embed-source-map mu-plugins/$npm_package_name-features/assets/css/src:mu-plugins/$npm_package_name-features/assets/css/build"
+    "start:styles:theme": "postcss themes/$npm_package_name/assets/css/src/*.scss --dir themes/$npm_package_name/assets/css/build --ext css --env development --watch --verbose",
+    "start:styles:theme-stylesheet": "postcss themes/$npm_package_name/assets/scss/style.scss --output themes/$npm_package_name/style.css --env development --watch --verbose",
+    "start:styles:theme-editor": "postcss themes/$npm_package_name/assets/scss/style-editor.scss --output themes/$npm_package_name/style-editor.css --env development --watch --verbose",
+    "start:styles:plugin": "postcss mu-plugins/$npm_package_name-features/assets/css/src/*.scss --dir mu-plugins/$npm_package_name-features/assets/css/build --ext css --env development --watch --verbose"
   }
 }
