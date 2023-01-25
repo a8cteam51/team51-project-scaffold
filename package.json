@@ -29,7 +29,7 @@
       "stringMap": []
     },
     "plugins": [],
-    "map": true
+    "map": false
   },
   "browserslist": [
     "extends @wordpress/browserslist-config"
