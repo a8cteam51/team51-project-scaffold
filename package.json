@@ -11,9 +11,9 @@
   },
   "devDependencies": {
     "@csstools/postcss-sass": "^5.0.1",
-    "@wordpress/browserslist-config": "^5.7.0",
-    "@wordpress/postcss-plugins-preset": "^4.8.0",
-    "@wordpress/scripts": "^25.1.0",
+    "@wordpress/browserslist-config": "^5.8.0",
+    "@wordpress/postcss-plugins-preset": "^4.9.0",
+    "@wordpress/scripts": "^25.2.0",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^10.1.0",
     "rtlcss": "^4.0.0"
@@ -40,9 +40,9 @@
     "build:scripts:theme": "wp-scripts build --webpack-src-dir=themes/$npm_package_name/assets/js/src --output-path=themes/$npm_package_name/assets/js/build",
     "build:scripts:plugin": "wp-scripts build --webpack-src-dir=mu-plugins/$npm_package_name-features/assets/js/src --output-path=mu-plugins/$npm_package_name-features/assets/js/build",
     "build:styles:theme": "postcss themes/$npm_package_name/assets/css/src/*.scss --dir themes/$npm_package_name/assets/css/build --ext css --env production",
-    "build:styles:theme-stylesheet": "postcss themes/$npm_package_name/assets/scss/style.scss --output themes/$npm_package_name/style.css --env production",
+    "build:styles:theme-stylesheet": "postcss themes/$npm_package_name/assets/sass/style.scss --output themes/$npm_package_name/style.css --env production",
     "build:styles:theme-stylesheet-rtl": "rtlcss themes/$npm_package_name/style.css themes/$npm_package_name/style-rtl.css",
-    "build:styles:theme-editor": "postcss themes/$npm_package_name/assets/scss/style-editor.scss --output themes/$npm_package_name/style-editor.css --env production",
+    "build:styles:theme-editor": "postcss themes/$npm_package_name/assets/sass/style-editor.scss --output themes/$npm_package_name/style-editor.css --env production",
     "build:styles:plugin": "postcss mu-plugins/$npm_package_name-features/assets/css/src/*.scss --dir mu-plugins/$npm_package_name-features/assets/css/build --ext css --env production",
     "format:scripts": "npm-run-all --sequential format:scripts:**",
     "format:scripts:theme": "wp-scripts format themes/$npm_package_name --no-error-on-unmatched-pattern",
@@ -66,8 +66,8 @@
     "start:scripts:theme": "wp-scripts start --webpack-src-dir=themes/$npm_package_name/assets/js/src --output-path=themes/$npm_package_name/assets/js/build",
     "start:scripts:plugin": "wp-scripts start --webpack-src-dir=mu-plugins/$npm_package_name-features/assets/js/src --output-path=mu-plugins/$npm_package_name-features/assets/js/build",
     "start:styles:theme": "postcss themes/$npm_package_name/assets/css/src/*.scss --dir themes/$npm_package_name/assets/css/build --ext css --env development --watch --verbose",
-    "start:styles:theme-stylesheet": "postcss themes/$npm_package_name/assets/scss/style.scss --output themes/$npm_package_name/style.css --env development --watch --verbose",
-    "start:styles:theme-editor": "postcss themes/$npm_package_name/assets/scss/style-editor.scss --output themes/$npm_package_name/style-editor.css --env development --watch --verbose",
+    "start:styles:theme-stylesheet": "postcss themes/$npm_package_name/assets/sass/style.scss --output themes/$npm_package_name/style.css --env development --watch --verbose",
+    "start:styles:theme-editor": "postcss themes/$npm_package_name/assets/sass/style-editor.scss --output themes/$npm_package_name/style-editor.css --env development --watch --verbose",
     "start:styles:plugin": "postcss mu-plugins/$npm_package_name-features/assets/css/src/*.scss --dir mu-plugins/$npm_package_name-features/assets/css/build --ext css --env development --watch --verbose"
   }
 }
