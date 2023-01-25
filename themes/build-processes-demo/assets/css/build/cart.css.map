@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/cart.scss","cart.css"],"names":[],"mappings":"AAAA;;EAAA;AAIA;EACE,cAAA;ACAF","file":"cart.css"}
+{"version":3,"sources":["../src/cart.scss%23sass","../src/cart.scss"],"names":[],"mappings":"AAAA;;EAAA;AAIA;ECAA,cAAA;AACA","file":"cart.css","sourcesContent":["/**\n * These styles should be only loaded on the cart page\n */\n\n.wp-cart-style {\n  color: #21759b;\n}\n","/**\n * These styles should be only loaded on the cart page\n */\n\n.wp-cart-style {\n  color: #21759b;\n}\n"]}
