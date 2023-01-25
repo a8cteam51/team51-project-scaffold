@@ -35,7 +35,7 @@
     "squizlabs/php_codesniffer": "3.*",
     "dealerdirect/phpcodesniffer-composer-installer": "*",
     "phpcompatibility/phpcompatibility-wp": "*",
-    "wp-coding-standards/wpcs": "*",
+    "wp-coding-standards/wpcs": "*@dev",
 
     "roave/security-advisories": "dev-latest"
   },
@@ -85,7 +85,10 @@
     "makemo:plugin": "wp i18n make-mo mu-plugins/build-processes-demo-features/languages",
 
     "packages-install": "@composer install --ignore-platform-reqs --no-interaction",
-    "packages-update": "@composer update --prefer-stable --no-interaction"
+    "packages-update": [
+      "@composer clear-cache",
+      "@composer update --prefer-stable --no-interaction"
+    ]
   },
   "config": {
     "allow-plugins": {
