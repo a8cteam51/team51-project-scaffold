@@ -1,0 +1,26 @@
+name: PHP Syntax Errors
+
+on:
+  push:
+    branches: [ trunk, develop ]
+  pull_request:
+    branches: [ trunk ]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        php: [ 7.4, 8.0, 8.1, 8.2 ]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup proper PHP version
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Check all files for syntax errors
+        run: find -L $GITHUB_WORKSPACE -path $GITHUB_WORKSPACE/vendor -prune -o -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
