@@ -40,5 +40,5 @@ jobs:
       - name: Install dependencies
         run: composer run-script packages-install
 
-      - name: Run PHP Code Sniffer
+      - name: Run PHP_CodeSniffer
         run: composer run-script lint:php
