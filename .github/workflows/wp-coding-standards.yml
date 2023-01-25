@@ -10,12 +10,12 @@ jobs:
   build:
     strategy:
       matrix:
-        php: [ 7.4, 8.0 ]
+        php: [ 8.2 ]
 
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup proper PHP version
         uses: shivammathur/setup-php@v2
@@ -33,6 +33,7 @@ jobs:
           key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-php-
+
       - name: Install dependencies
         run: composer run-script packages-install
 
