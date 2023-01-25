@@ -4,7 +4,7 @@
 
   "description": "A demo project for showcasing standardized build processes for various asset types.",
   "homepage": "https://build-processes-demo-production.mystagingwebsite.com",
-  "license": "GPL-3.0-or-later",
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "Contributors",
