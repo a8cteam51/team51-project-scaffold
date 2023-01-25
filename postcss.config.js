@@ -5,7 +5,10 @@ module.exports = ( ctx ) => {
 	const isSass = ( '.scss' === ctx.file.extname );
 
 	return {
-		map: { inline: isDevelopment },
+		map: {
+			inline: isDevelopment,
+			annotation: true
+		},
 		parser: isSass ? 'postcss-scss' : false,
 		plugins: [
 			...( isSass ? [ require( '@csstools/postcss-sass' ) ] : [] ),
