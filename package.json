@@ -43,7 +43,6 @@
     "build:styles:theme-stylesheet": "postcss themes/$npm_package_name/assets/sass/style.scss --output themes/$npm_package_name/style.css --env production",
     "build:styles:theme-stylesheet-rtl": "rtlcss themes/$npm_package_name/style.css themes/$npm_package_name/style-rtl.css",
     "build:styles:theme-editor": "postcss themes/$npm_package_name/assets/sass/style-editor.scss --output themes/$npm_package_name/style-editor.css --env production",
-    "build:styles:theme-editor-rtl": "rtlcss themes/$npm_package_name/style-editor.css themes/$npm_package_name/style-editor-rtl.css",
     "build:styles:features": "postcss mu-plugins/$npm_package_name-features/assets/css/src/*.scss --dir mu-plugins/$npm_package_name-features/assets/css/build --ext css --env production",
     "format:scripts": "npm-run-all --sequential format:scripts:**",
     "format:scripts:theme": "wp-scripts format themes/$npm_package_name --no-error-on-unmatched-pattern",

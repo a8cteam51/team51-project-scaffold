@@ -11,42 +11,54 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// Loads the theme's translated strings.
-function bpd_load_theme_textdomain(): void {
-	load_child_theme_textdomain( 'build-processes-demo', get_stylesheet_directory() . '/languages' );
+/**
+ * Returns the theme's slug.
+ *
+ * @since   1.0.0
+ * @version 1.0.0
+ *
+ * @return  string
+ */
+function bpd_get_theme_slug(): string {
+	return sanitize_key( wp_get_theme()->get( 'Theme Name' ) );
 }
-add_action( 'init', 'bpd_load_theme_textdomain' );
 
-// Registers and/or enqueues theme scripts and stylesheets.
-function bpd_enqueue_assets(): void {
-	$theme_slug = sanitize_key( wp_get_theme()->get( 'Theme Name' ) );
-	wp_enqueue_style( $theme_slug, get_stylesheet_uri() . '/style.css', array( /* parent theme style, if applicable */ ), filemtime( get_stylesheet_directory() . 'style.css' ) );
-
-	if ( function_exists( 'is_cart' ) && is_cart() ) {
-		$asset_meta = array(
-			'dependencies' => array( $theme_slug ),
-			'version'      => filemtime( get_stylesheet_directory() . '/assets/css/build/cart.css' ),
-		);
-		wp_enqueue_style( "$theme_slug-cart", get_stylesheet_directory_uri() . '/assets/css/build/cart.css', $asset_meta['dependencies'], $asset_meta['version'] );
+/**
+ * Returns an array with meta information for a given asset path. First, it checks for an .asset.php file in the same directory
+ * as the given asset file whose contents are returns if it exists. If not, it returns an array with the file's last modified
+ * time as the version and the main stylesheet + any extra dependencies passed in as the dependencies.
+ *
+ * @since   1.0.0
+ * @version 1.0.0
+ *
+ * @param   string      $asset_path             The path to the asset file.
+ * @param   array|null  $extra_dependencies     Any extra dependencies to include in the returned meta.
+ *
+ * @return  array|null
+ */
+function bpd_get_theme_asset_meta( string $asset_path, ?array $extra_dependencies = null ): ?array {
+	if ( ! file_exists( $asset_path ) ) {
+		return null;
 	}
-	if ( function_exists( 'is_checkout' ) && is_checkout() ) {
-		$asset_meta = array(
-			'dependencies' => array( $theme_slug ),
-			'version'      => filemtime( get_stylesheet_directory() . '/assets/css/build/checkout.css' ),
-		);
-		wp_enqueue_style( "$theme_slug-checkout", get_stylesheet_directory_uri() . '/assets/css/build/checkout.css', $asset_meta['dependencies'], $asset_meta['version'] );
+
+	$asset_path_info = pathinfo( $asset_path );
+	if ( file_exists( $asset_path_info['dirname'] . '/' . $asset_path_info['filename'] . '.asset.php' ) ) {
+		return require $asset_path_info['dirname'] . '/' . $asset_path_info['filename'] . '.asset.php';
 	}
 
-	$asset_meta = require get_stylesheet_directory() . '/assets/js/build/index.asset.php';
-	wp_enqueue_script( $theme_slug, get_stylesheet_directory_uri() . '/assets/js/build/index.js', $asset_meta['dependencies'], $asset_meta['version'], true );
-}
-add_action( 'wp_enqueue_scripts', 'bpd_enqueue_assets' );
+	$asset_meta = array(
+		'dependencies' => $extra_dependencies ?? array(),
+		'version'      => filemtime( $asset_path ),
+	);
+	if ( 'css' === $asset_path_info['extension'] && get_stylesheet_uri() !== $asset_path ) {
+		$asset_meta['dependencies'][] = bpd_get_theme_slug() . '-style';
+	}
+	if ( false === $asset_meta['version'] ) { // Safeguard against filemtime() returning false.
+		$asset_meta['version'] = wp_get_theme()->get( 'Version' );
+	}
 
-// Registers an editor stylesheet for the theme.
-function bpd_add_editor_style(): void {
-	add_editor_style( 'style-editor.css' );
+	return $asset_meta;
 }
-add_action( 'admin_init', 'bpd_add_editor_style' );
 
 // Include the rest of the theme functionality.
 foreach ( glob( get_stylesheet_directory() . '/includes/*.php' ) as $bpd_filename ) {
