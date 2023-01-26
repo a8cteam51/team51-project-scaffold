@@ -8,7 +8,7 @@ if ( ! class_exists( 'WooCommerce' ) ) {
 }
 
 /**
- * Registers and/or enqueue WooCommerce-specific scripts and stylesheets.
+ * Registers and/or enqueues WooCommerce-specific scripts and stylesheets.
  *
  * @since   1.0.0
  * @version 1.0.0

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/book-archive.scss%23sass","../src/book-archive.scss"],"names":[],"mappings":"AAAA;ECCC,uBDAA;EACE,gBAAA;ACCH","file":"book-archive.css","sourcesContent":["html {\n\tscroll-behavior: smooth;\n  \tbackground: gray;\n}\n","html {\n\tscroll-behavior: smooth;\n  \tbackground: gray;\n}\n"]}
