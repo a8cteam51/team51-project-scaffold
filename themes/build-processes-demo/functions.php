@@ -43,7 +43,13 @@ function bpd_get_theme_asset_meta( string $asset_path, ?array $extra_dependencie
 
 	$asset_path_info = pathinfo( $asset_path );
 	if ( file_exists( $asset_path_info['dirname'] . '/' . $asset_path_info['filename'] . '.asset.php' ) ) {
-		$asset_meta = require $asset_path_info['dirname'] . '/' . $asset_path_info['filename'] . '.asset.php';
+		$asset_meta  = require $asset_path_info['dirname'] . '/' . $asset_path_info['filename'] . '.asset.php';
+		$asset_meta += array( 'dependencies' => array() ); // Ensure dependencies key exists.
+
+		if ( is_array( $extra_dependencies ) ) {
+			$asset_meta['dependencies'] = array_merge( $asset_meta['dependencies'], $extra_dependencies );
+			$asset_meta['dependencies'] = array_unique( $asset_meta['dependencies'] );
+		}
 	} else {
 		$asset_meta = array(
 			'dependencies' => $extra_dependencies ?? array(),
