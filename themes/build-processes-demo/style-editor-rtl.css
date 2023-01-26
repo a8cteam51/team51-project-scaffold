@@ -1,0 +1,15 @@
+/**
+ * These styles should be loaded by the Block Editor only
+ */
+/**
+ * Core
+ * - Description of core styles
+ */
+.wp-theme-style {
+  background-color: #21759b;
+  color: #fff;
+  padding: 2px;
+  -webkit-appearance: auto;
+          appearance: auto;
+  direction: rtl;
+}
