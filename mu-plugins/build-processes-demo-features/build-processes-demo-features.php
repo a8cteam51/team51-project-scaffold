@@ -23,13 +23,26 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// Load the features plugin's translated strings.
+// Loads the features plugin's translated strings.
 function bpd_features_load_textdomain() {
 	load_muplugin_textdomain( 'build-processes-demo-features', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 add_action( 'init', 'bpd_features_load_textdomain' );
 
-// Load the features plugin's files.
+// Registers and/or enqueues the features plugin's scripts and stylesheets.
+function bpd_features_enqueue_assets(): void {
+	$asset_meta = array(
+		'dependencies' => array(),
+		'version'      => filemtime( __DIR__ . '/assets/css/build/extra.css' ),
+	);
+	wp_enqueue_style( 'bpd-features', plugin_dir_url( __DIR__ ) . 'assets/css/build/extra.css', $asset_meta['dependencies'], $asset_meta['version'] );
+
+	$asset_meta = require __DIR__ . '/assets/js/build/index.asset.php';
+	wp_enqueue_script( 'bpd-features', plugin_dir_url( __DIR__ ) . 'assets/js/build/index.js', $asset_meta['dependencies'], $asset_meta['version'], true );
+}
+add_action( 'wp_enqueue_scripts', 'bpd_features_enqueue_assets' );
+
+// Include the rest of the features plugin's files.
 foreach ( glob( __DIR__ . '/includes/*.php' ) as $bpd_features_filename ) {
 	if ( preg_match( '#/includes/_#i', $bpd_features_filename ) ) {
 		continue; // Ignore files prefixed with an underscore.
