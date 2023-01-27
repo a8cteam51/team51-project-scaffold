@@ -3,11 +3,25 @@
  * - Description of page styles
  */
 .wp-theme-style {
-  background-color: #21759b;
   color: #fff;
   padding: 2px;
   -webkit-appearance: auto;
           appearance: auto;
   direction: ltr;
+}
+@media (min-width: 992px) {
+  .wp-theme-style {
+    background-color: #21759b;
+  }
+}
+@media (max-width: 767px) {
+  .wp-theme-style {
+    background-color: #d54e21;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .wp-theme-style {
+    background-color: #7ad03a;
+  }
 }
 /*# sourceMappingURL=style-editor.css.map */
