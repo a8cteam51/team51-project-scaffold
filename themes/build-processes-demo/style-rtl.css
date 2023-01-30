@@ -27,6 +27,5 @@ Use it to make something cool, have fun, and share what you've learned with othe
   padding: 2px;
   -webkit-appearance: auto;
           appearance: auto;
-  direction: ltr;
+  direction: rtl;
 }
-/*# sourceMappingURL=style.css.map */
