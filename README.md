@@ -1,9 +1,13 @@
 # Build Processes Demo
 
+## Links
+
+- [Soft Launch](https://wpspecialprojectsp2.wordpress.com/2023/01/26/front-end-build-processes-task-force-product-soft-launch/)
+
 ## What's this?
 
 This is a demo/start-kit for showcasing standardized build processes of theme and plugin assets.
-The examples listed here are for the most common tasks, but all of them don't apply to every project so only use what is needed.
+**The examples listed here are for the most common tasks, but all of them don't apply to every project so only use what is needed.**
 
 - [Package.json](https://github.com/a8cteam51/build-processes-demo/blob/trunk/package.json)
 - [Composer.json](https://github.com/a8cteam51/build-processes-demo/blob/trunk/composer.json)
@@ -44,15 +48,20 @@ Use this as a guide on how to setup your theme/plugin build processes.
 .
 ```
 
-## Package.json
+## Scripts
 
-- should have the engines set to the version of node you are using
-- the packages listed in the devDependencies should be used
-- contains NPM scripts for building/watching plugin and theme CSS and JS files
-- contains NPM scripts for linting
+Scripts for building assets for both theme and blocks are located in the `package.json` file.
+Scripts for internationalization and Code Style are located in the `composer.json` file.
 
-## Composer.json
+## Installing themes and plugins through Composer.json
 
-### Translations
+In composer.json there are examples on how to install a theme or plugin through composer.
+This can be used to install a parent theme or a plugin that is required for the theme to work.
 
+### Tips & Tricks (not required)
 
+You can include WordPress as a Composer dev dependency by including the package `johnpbloch/wordpress-core` as a Composer dev dependency.
+
+## Contributing
+
+If you have any suggestions or improvements, please open an issue or a pull request.
