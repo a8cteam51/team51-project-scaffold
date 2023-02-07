@@ -14,7 +14,7 @@ This is a demo/start-kit for showcasing standardized build processes of theme an
 
 ## How to use?
 
-#### This is not a starter theme!
+### This is not a starter theme
 
 Use this as a guide on how to setup your theme/plugin build processes.
 
@@ -43,6 +43,7 @@ Use this as a guide on how to setup your theme/plugin build processes.
 
 Scripts for building assets for both theme and blocks are located in the `package.json` file.
 Scripts for internationalization and Code Style are located in the `composer.json` file.
+In both files there are scripts that cover a wide range of functionalities use what you need.
 
 ## Installing themes and plugins through Composer.json
 
