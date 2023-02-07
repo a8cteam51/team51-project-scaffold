@@ -18,15 +18,6 @@ This is a demo/start-kit for showcasing standardized build processes of theme an
 
 Use this as a guide on how to setup your theme/plugin build processes.
 
-## Dependencies
-
-- [Node.js](https://nodejs.org/en/)
-- [NPM](https://www.npmjs.com/)
-- [Composer](https://getcomposer.org/)
-- [Sass](https://sass-lang.com/)
-- [Wordpress-scripts](https://developer.wordpress.org/block-editor/packages/packages-scripts/)
-- [Postcss](https://postcss.org/)
-
 ## Asset Folder Structure
 
 ```console
