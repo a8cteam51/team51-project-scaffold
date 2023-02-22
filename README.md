@@ -51,7 +51,7 @@ All custom-built blocks must be placed in a mu-plugin. The demo project contains
 
 By separating the blocks from the theme into a mu-plugin, we can ensure that the blocks are always available on the site, even if the theme is changed (e.g., because of a future redesign or as part of the debugging process). Moreover, it forces us, as developers, to think about the blocks as a separate entity from the theme and to design the code as such thus making it easier to reuse them in other projects.
 
-The mu-plugin must contain enough CSS for a basic styling of the blocks, but it's fine if the theme provides its own CSS for maintaining the site's look-and-feel of the site. Take [Seedlet as an example](https://github.com/Automattic/themes/tree/trunk/seedlet/assets/sass/blocks) of the theme providing its own styling for the blocks.
+The mu-plugin must contain enough CSS for the block to be functional and not appear broken. All other styling can be held in the mu-plugin or the theme. [Seedlet is an example](https://github.com/Automattic/themes/tree/trunk/seedlet/assets/sass/blocks) of a theme providing its own styling for the blocks.
 
 ### Features plugin
 
