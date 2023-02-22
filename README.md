@@ -18,7 +18,7 @@ As a rule of thumb, if there is another source of updates for a piece of code, i
 
 This demo project contains a theme called `build-processes-demo` which is a child theme of the [Blockbase](https://wordpress.org/themes/blockbase/) theme. Using Blockbase is **not** a requirement, but it is a good example of a FSE theme.
 
-The usage of a child theme is strongly encouraged even if the project is built upon a Twenty* theme. Rather than modifying the theme directly and disabling updates by renaming it, it is better to create a child theme and use the Twenty* theme as a parent theme. That way, we can still benefit from fixes in the template theme **and** it makes it much easier to figure out what the customizations were when the inevitable redesign rolls around in 3-5 years.
+The usage of a child theme is strongly encouraged even if the project is built upon a Twenty\* theme. Rather than modifying the theme directly and disabling updates by renaming it, it is better to create a child theme and use the Twenty\* theme as a parent theme. That way, we can still benefit from fixes in the template theme **and** it makes it much easier to figure out what the customizations were when the inevitable redesign rolls around in 3-5 years.
 
 In general, any active theme on the site should contain the following folder structure:
 
@@ -89,7 +89,7 @@ Contributions are welcome! Please open an issue or a pull request if you find an
 
 The standardized build processes use the `@wordpress/scripts` npm package for building JS assets. As it depends on webpack, the JS assets are built into the `build` folder with the `src` folder containing the source files.
 
-To keep inline with this convention, the CSS assets are also to be built into the `build` folder with the `src` folder containing the source files.
+To keep in line with this convention, the CSS assets are also to be built into the `build` folder with the `src` folder containing the source files.
 
 If you don't need a build step for your single-purpose CSS and JS files, you can remove the `build` folder and move the files in the `src` folder to the root of the `css` and `js` folders. But if you're using a build process for them, as we recommend, then please use this folder structure as a convention. [Read this comment for more info](https://github.com/a8cteam51/build-processes-demo/issues/17#issuecomment-1379277392).
 
