@@ -75,7 +75,7 @@ It's possible to install themes and plugins which are available on the WordPress
 
 Installing non-WP.org themes and plugins via Composer is also possible if the plugin offers support for it. For example, all plugins sold through Freemius do support Composer, as well as some popular ones such as Advanced Custom Fields Pro.
 
-### Installing WordPress itself as a Composer dependency
+### Installing WordPress itself as a Composer dependency (optional nice-to-have)
 
 You can install WordPress itself as a Composer dependency by including the package `johnpbloch/wordpress-core`. This can be useful for PHPStorm's code completion or simply for searching through the codebase locally.
 
