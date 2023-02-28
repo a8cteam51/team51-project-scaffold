@@ -1,9 +1,11 @@
 // Media query breakpoint examples.
 $breakpoints: (
-    xs: 481px,
-    sm: 576px,
-    md: 768px,
-    lg: 992px,
-    xl: 1200px,
-    xxl: 1440px,
+    zoomed-in: 280px,
+    mobile: 480px,
+    small: 600px,
+    medium: 782px,
+    large: 960px,
+    xlarge: 1080px,
+    wide: 1280px,
+    huge: 1440px,
 );
