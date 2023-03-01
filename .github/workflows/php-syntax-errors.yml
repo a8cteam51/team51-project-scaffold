@@ -10,7 +10,7 @@ jobs:
   build:
     strategy:
       matrix:
-        php: [ 8.2, 8.3 ]
+        php: [ 8.2, 8.3 ] # Include all PHP versions between the site's current version and the latest release version.
 
     runs-on: ubuntu-latest
 

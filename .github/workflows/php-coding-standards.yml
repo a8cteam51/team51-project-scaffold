@@ -1,4 +1,4 @@
-name: WordPress Coding Standards
+name: PHP Coding Standards
 
 on:
   push:
