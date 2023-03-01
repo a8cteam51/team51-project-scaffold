@@ -23,6 +23,6 @@
 			</property>
 		</properties>
 	</rule>
-	<config name="minimum_supported_wp_version" value="4.1"/>
+
 	<!-- Add any other custom rules here. -->
 </ruleset>
