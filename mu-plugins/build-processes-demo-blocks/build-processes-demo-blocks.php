@@ -7,6 +7,8 @@
  * @author      WP Special Projects
  * @license     GPL-3.0-or-later
  *
+ * @noinspection    ALL
+ *
  * @wordpress-plugin
  * Plugin Name:             Build Processes Demo Blocks
  * Description:             Example block scaffolded with Create Block tool.
@@ -23,19 +25,20 @@
 
 defined( 'ABSPATH' ) || exit;
 
-/**
- * Registers the block using the metadata loaded from the `block.json` file.
- * Behind the scenes, it registers also all assets so they can be enqueued
- * through the block editor in the corresponding context.
- *
- * @see https://developer.wordpress.org/reference/functions/register_block_type/
- */
-function build_processes_demo_blocks_init(): void {
-	register_block_type( __DIR__ . '/build/foobar' );
-	register_block_type( __DIR__ . '/build/spamham' );
+// Define plugin constants.
+function_exists( 'get_plugin_data' ) || require_once ABSPATH . 'wp-admin/includes/plugin.php';
+define( 'BPD_BLOCKS_METADATA', get_plugin_data( __FILE__, false, false ) );
 
-	load_muplugin_textdomain( 'build-processes-demo-blocks', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-	wp_set_script_translations( generate_block_asset_handle( 'build-processes-demo/foobar', 'editorScript' ), 'build-processes-demo-blocks', plugin_dir_path( __FILE__ ) . 'languages' );
-	wp_set_script_translations( generate_block_asset_handle( 'build-processes-demo/spamham', 'editorScript' ), 'build-processes-demo-blocks', plugin_dir_path( __FILE__ ) . 'languages' );
+define( 'BPD_BLOCKS_DIR', plugin_dir_path( __FILE__ ) );
+define( 'BPD_BLOCKS_URL', plugin_dir_url( __FILE__ ) );
+
+// Include the rest of the blocks plugin's files if system requirements check out.
+if ( is_php_version_compatible( BPD_BLOCKS_METADATA['RequiresPHP'] ) && is_wp_version_compatible( BPD_BLOCKS_METADATA['RequiresWP'] ) ) {
+	foreach ( glob( __DIR__ . '/includes/*.php' ) as $bpd_blocks_filename ) {
+		if ( preg_match( '#/includes/_#i', $bpd_blocks_filename ) ) {
+			continue; // Ignore files prefixed with an underscore.
+		}
+
+		include $bpd_blocks_filename;
+	}
 }
-add_action( 'init', 'build_processes_demo_blocks_init' );
