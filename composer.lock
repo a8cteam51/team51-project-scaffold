@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6967b79807af1d2b747db282f2cd2e29",
+    "content-hash": "2cb4eae6b7b102ad9cbd2bd40ef88f8e",
     "packages": [],
     "packages-dev": [
         {
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:a8cteam51/team51-configs.git",
-                "reference": "c14ab02feba33252a892581b9c802aaed7def5c3"
+                "reference": "efeefe4fd1641b2a229bd529103a5237e810a1e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/a8cteam51/team51-configs/zipball/c14ab02feba33252a892581b9c802aaed7def5c3",
-                "reference": "c14ab02feba33252a892581b9c802aaed7def5c3",
+                "url": "https://api.github.com/repos/a8cteam51/team51-configs/zipball/efeefe4fd1641b2a229bd529103a5237e810a1e7",
+                "reference": "efeefe4fd1641b2a229bd529103a5237e810a1e7",
                 "shasum": ""
             },
             "require": {
@@ -27,7 +27,7 @@
             "require-dev": {
                 "phpcompatibility/phpcompatibility-wp": "*",
                 "squizlabs/php_codesniffer": "3.*",
-                "wp-coding-standards/wpcs": "*@dev"
+                "wp-coding-standards/wpcs": "dev-develop"
             },
             "default-branch": true,
             "type": "library",
@@ -37,7 +37,7 @@
                 ],
                 "composer:update": [
                     "@composer clear-cache",
-                    "@composer update --no-interaction"
+                    "@composer update --prefer-stable --no-interaction"
                 ]
             },
             "license": [
@@ -50,7 +50,7 @@
                 }
             ],
             "description": "A collection of shared configuration files for Team51 projects.",
-            "time": "2023-03-01T16:56:46+00:00"
+            "time": "2023-03-01T17:49:01+00:00"
         },
         {
             "name": "composer/installers",
@@ -2020,7 +2020,7 @@
         "wp-coding-standards/wpcs": 20,
         "roave/security-advisories": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=7.4",

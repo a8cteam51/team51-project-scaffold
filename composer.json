@@ -41,7 +41,7 @@
     "squizlabs/php_codesniffer": "3.*",
     "dealerdirect/phpcodesniffer-composer-installer": "*",
     "phpcompatibility/phpcompatibility-wp": "*",
-    "wp-coding-standards/wpcs": "*@dev",
+    "wp-coding-standards/wpcs": "dev-develop",
 
     "roave/security-advisories": "dev-latest"
   },
@@ -93,7 +93,7 @@
     "packages-install": "@composer install --ignore-platform-reqs --no-interaction",
     "packages-update": [
       "@composer clear-cache",
-      "@composer update --no-interaction"
+      "@composer update --prefer-stable --no-interaction"
     ]
   },
   "config": {
