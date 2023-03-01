@@ -71,11 +71,21 @@ function bpd_features_enqueue_book_post_type_frontend_assets(): void {
 
 	if ( is_post_type_archive( 'book' ) ) {
 		$asset_meta = bpd_features_get_asset_meta( BPD_FEATURES_DIR . 'assets/css/build/book-archive.css' );
-		wp_enqueue_style( "$plugin_slug-book-archive", BPD_FEATURES_URL . 'assets/css/build/book-archive.css', $asset_meta['dependencies'], $asset_meta['version'] );
+		wp_enqueue_style(
+			"$plugin_slug-book-archive",
+			BPD_FEATURES_URL . 'assets/css/build/book-archive.css',
+			$asset_meta['dependencies'],
+			$asset_meta['version']
+		);
 	}
 	if ( is_singular( 'book' ) ) {
 		$asset_meta = bpd_features_get_asset_meta( BPD_FEATURES_DIR . 'assets/css/build/book-singular.css' );
-		wp_enqueue_style( "$plugin_slug-book-singular", BPD_FEATURES_URL . 'assets/css/build/book-singular.css', $asset_meta['dependencies'], $asset_meta['version'] );
+		wp_enqueue_style(
+			"$plugin_slug-book-singular",
+			BPD_FEATURES_URL . 'assets/css/build/book-singular.css',
+			$asset_meta['dependencies'],
+			$asset_meta['version']
+		);
 	}
 }
 add_action( 'wp_enqueue_scripts', 'bpd_features_enqueue_book_post_type_frontend_assets' );
