@@ -26,16 +26,14 @@
 defined( 'ABSPATH' ) || exit;
 
 // Define plugin constants.
-define( 'BPD_FEATURES_VERSION', '0.1.0' );
+function_exists( 'get_plugin_data' ) || require_once ABSPATH . 'wp-admin/includes/plugin.php';
+define( 'BPD_FEATURES_METADATA', get_plugin_data( __FILE__, false, false ) );
+
 define( 'BPD_FEATURES_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BPD_FEATURES_URL', plugin_dir_url( __FILE__ ) );
 
-// Define minimum environment requirements.
-define( 'BPD_FEATURES_MIN_PHP', '8.1' );
-define( 'BPD_FEATURES_MIN_WP', '6.1' );
-
 // Include the rest of the features plugin's files if system requirements check out.
-if ( is_php_version_compatible( BPD_FEATURES_MIN_PHP ) && is_wp_version_compatible( BPD_FEATURES_MIN_WP ) ) {
+if ( is_php_version_compatible( BPD_FEATURES_METADATA['RequiresPHP'] ) && is_wp_version_compatible( BPD_FEATURES_METADATA['RequiresWP'] ) ) {
 	require_once 'functions.php';
 
 	foreach ( glob( __DIR__ . '/includes/*.php' ) as $bpd_features_filename ) {

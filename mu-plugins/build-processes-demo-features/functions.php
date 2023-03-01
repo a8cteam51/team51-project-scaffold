@@ -42,7 +42,7 @@ function bpd_features_get_asset_meta( string $asset_path, ?array $extra_dependen
 			'version'      => filemtime( $asset_path ),
 		);
 		if ( false === $asset_meta['version'] ) { // Safeguard against filemtime() returning false.
-			$asset_meta['version'] = BPD_FEATURES_VERSION;
+			$asset_meta['version'] = BPD_FEATURES_METADATA['Version'];
 		}
 	}
 

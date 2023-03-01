@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @return  void
  */
-function bpd_features_load_textdomain() {
-	load_muplugin_textdomain( 'build-processes-demo-features', dirname( plugin_basename( BPD_FEATURES_DIR ) ) . '/languages' );
+function bpd_features_load_textdomain(): void {
+	load_muplugin_textdomain( BPD_FEATURES_METADATA['TextDomain'], dirname( plugin_basename( BPD_FEATURES_DIR ) ) . BPD_FEATURES_METADATA['DomainPath'] );
 }
 add_action( 'init', 'bpd_features_load_textdomain' );
