@@ -23,4 +23,4 @@ jobs:
           php-version: ${{ matrix.php }}
 
       - name: Check all files for syntax errors
-        run: find -L $GITHUB_WORKSPACE -path $GITHUB_WORKSPACE/vendor -prune -o -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
+        run: find -L $GITHUB_WORKSPACE -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
