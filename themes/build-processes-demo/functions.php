@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
  * @return  string
  */
 function bpd_get_theme_slug(): string {
-	return sanitize_key( wp_get_theme()->get( 'Theme Name' ) );
+	return sanitize_key( wp_get_theme()->get( 'Name' ) );
 }
 
 /**
@@ -66,8 +66,8 @@ function bpd_get_theme_asset_meta( string $asset_path, ?array $extra_dependencie
 	return $asset_meta;
 }
 
-// Include the rest of the theme functionality.
-foreach ( glob( get_stylesheet_directory() . '/includes/*.php' ) as $bpd_filename ) {
+// Include the rest of the theme's files.
+foreach ( glob( __DIR__ . '/includes/*.php' ) as $bpd_filename ) {
 	if ( preg_match( '#/includes/_#i', $bpd_filename ) ) {
 		continue; // Ignore files prefixed with an underscore.
 	}
