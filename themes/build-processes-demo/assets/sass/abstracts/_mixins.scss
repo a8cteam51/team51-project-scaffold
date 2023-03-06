@@ -2,66 +2,44 @@
 
 // Media query "greater than $breakpoint".
 @mixin breakpoint-up($breakpoint) {
-    // Check if the breakpoint is defined.
     @if map-has-key($breakpoints, $breakpoint) {
-        // Get the breakpoint value.
         $breakpoint-value: map-get($breakpoints, $breakpoint);
 
-        // Return media query.
         @media (min-width: $breakpoint-value) {
             @content;
         }
-
-        // Undefined breakpoint.
     } @else {
-        // Warn breakpoint is undefined.
         @warn 'Undefined Breakpoint: (#{$breakpoint}). Available breakpoints: #{map-keys($breakpoints)}';
     }
 }
 
 // Media query "less than $breakpoint".
 @mixin breakpoint-down($breakpoint) {
-    // Check if the breakpoint is defined.
     @if map-has-key($breakpoints, $breakpoint) {
-        // Get the breakpoint value.
         $breakpoint-value: map-get($breakpoints, $breakpoint);
 
-        // Return media query.
         @media (max-width: ($breakpoint-value - 1)) {
             @content;
         }
-
-        // Undefined breakpoint.
     } @else {
-        // Warn breakpoint is undefined.
         @warn 'Undefined Breakpoint: (#{$breakpoint}). Available breakpoints: #{map-keys($breakpoints)}';
     }
 }
 
 // Media query "between $a and $b".
 @mixin breakpoint-between($a, $b) {
-    // Check if both breakpoints are defined.
     @if map-has-key($breakpoints, $a) and map-has-key($breakpoints, $b) {
-        // Get the breakpoints.
         $breakpoint-a: map-get($breakpoints, $a);
         $breakpoint-b: map-get($breakpoints, $b);
 
-        // Return media query.
         @media (min-width: $breakpoint-a) and (max-width: ($breakpoint-b - 1)) {
             @content;
         }
-
-        // One or two undefined breakpoints.
     } @else {
-        // $a breakpoint is undefined.
         @if (map-has-key($breakpoints, $a) == false) {
-            // Warn breakpoint is undefined.
             @warn 'Undefined Breakpoint: #{$a}. Available breakpoints: #{map-keys($breakpoints)}';
         }
-
-        // $b breakpoint is undefined.
         @if (map-has-key($breakpoints, $b) == false) {
-            // Warn breakpoint is undefined.
             @warn 'Undefined Breakpoint: #{$b}. Available breakpoints: #{map-keys($breakpoints)}';
         }
     }
