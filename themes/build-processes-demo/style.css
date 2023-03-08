@@ -22,11 +22,25 @@ Use it to make something cool, have fun, and share what you've learned with othe
  * - Description of page styles
  */
 .wp-theme-style {
-  background-color: #21759b;
   color: #fff;
   padding: 2px;
   -webkit-appearance: auto;
           appearance: auto;
   direction: ltr;
+}
+@media (min-width: 960px) {
+  .wp-theme-style {
+    background-color: #21759b;
+  }
+}
+@media (max-width: 781px) {
+  .wp-theme-style {
+    background-color: #d54e21;
+  }
+}
+@media (min-width: 782px) and (max-width: 959px) {
+  .wp-theme-style {
+    background-color: #7ad03a;
+  }
 }
 /*# sourceMappingURL=style.css.map */
