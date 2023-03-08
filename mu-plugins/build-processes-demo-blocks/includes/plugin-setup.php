@@ -9,11 +9,11 @@ defined( 'ABSPATH' ) || exit;
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
-function build_processes_demo_blocks_init(): void {
-	$bpd_block_dirs = glob( BPD_BLOCKS_DIR . 'build/*', GLOB_ONLYDIR );
-	array_walk( $bpd_block_dirs, 'register_block_type' );
+function bpd_blocks_init(): void {
+	register_block_type( BPD_BLOCKS_DIR . 'build/foobar' );
+	register_block_type( BPD_BLOCKS_DIR . 'build/spamham' );
 }
-add_action( 'init', 'build_processes_demo_blocks_init' );
+add_action( 'init', 'bpd_blocks_init' );
 
 /**
  * Loads the blocks plugin's translated strings.
