@@ -2,8 +2,15 @@
   "name": "build-processes-demo",
   "version": "1.0.0",
   "description": "A demo project for showcasing standardized build processes for various asset types.",
+  "author": {
+    "name": "WordPress.com Special Projects Team",
+    "url": "https://wpspecialprojects.wordpress.com/"
+  },
+  "license": "GPL-2.0-or-later",
+  "keywords": [ "wordpress", "demo" ],
   "homepage": "https://build-processes-demo-production.mystagingwebsite.com",
-  "license": "GPL-3.0-or-later",
+  "repository": "https://github.com/a8cteam51/build-processes-demo",
+  "bugs": "https://github.com/a8cteam51/build-processes-demo/issues",
   "private": true,
   "engines": {
     "node": ">=16.0",

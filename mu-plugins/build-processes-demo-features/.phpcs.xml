@@ -3,7 +3,7 @@
 	<description>Custom ruleset for the Build Processes Demo site features.</description>
 
 	<!-- Extend the A8CTeam51 ruleset. -->
-	<rule ref="../../.phpcs.xml.dist"/>
+	<rule ref="../../vendor/a8cteam51/team51-configs/quality-tools/.phpcs.xml.dist"/>
 
 	<!-- Check that the proper text domain(s) is used everywhere. -->
 	<rule ref="WordPress.WP.I18n">
@@ -24,5 +24,5 @@
 		</properties>
 	</rule>
 
-	<!-- Add any other custom rulesets here. -->
+	<!-- Add any other custom rules here. -->
 </ruleset>
