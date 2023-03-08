@@ -1,26 +1,27 @@
-@use '../abstracts' as *;
+@use "../abstracts" as *;
+
 /**
  * Page
  * - Description of page styles
  */
 .wp-theme-style {
-    color: #fff;
-    padding: 2px;
-    appearance: auto; // Added to test autoprefixer via postcss
-    direction: ltr; // Added to test rtlcss
+	color: #fff;
+	padding: 2px;
+	appearance: auto; // Added to test autoprefixer via postcss
+	direction: ltr; // Added to test rtlcss
 
-    // Added to test 'greater than breakpoint' mixin.
-    @include breakpoint-up(large) {
-        background-color: #21759b;
-    }
+	// Added to test 'greater than breakpoint' mixin.
+	@include breakpoint-up(large) {
+		background-color: #21759b;
+	}
 
-    // Added to test 'less than breakpoint' mixin.
-    @include breakpoint-down(medium) {
-        background-color: #d54e21;
-    }
+	// Added to test 'less than breakpoint' mixin.
+	@include breakpoint-down(medium) {
+		background-color: #d54e21;
+	}
 
-    // Added to test 'between breakpoints' mixin.
-    @include breakpoint-between(medium, large) {
-        background-color: #7ad03a;
-    }
+	// Added to test 'between breakpoints' mixin.
+	@include breakpoint-between(medium, large) {
+		background-color: #7ad03a;
+	}
 }

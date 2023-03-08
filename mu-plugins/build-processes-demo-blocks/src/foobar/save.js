@@ -25,7 +25,10 @@ import { useBlockProps } from '@wordpress/block-editor';
 export default function save() {
 	return (
 		<p { ...useBlockProps.save() }>
-			{ __( 'Todo List – hello from the saved content from foobar!', 'build-processes-demo-blocks' ) }
+			{ __(
+				'Todo List – hello from the saved content from foobar!',
+				'build-processes-demo-blocks'
+			) }
 		</p>
 	);
 }

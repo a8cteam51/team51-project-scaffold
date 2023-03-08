@@ -50,7 +50,7 @@ function bpd_get_theme_asset_meta( string $asset_path, ?array $extra_dependencie
 			'dependencies' => array(),
 			'version'      => filemtime( $asset_path ),
 		);
-		if ( 'css' === $asset_path_info['extension'] && get_stylesheet_directory() . '/style.css' !== $asset_path ) {
+		if ( 'css' === $asset_path_info['extension'] && get_theme_file_path( 'style.css' ) !== $asset_path ) {
 			$asset_meta['dependencies'][] = bpd_get_theme_slug() . '-style';
 		}
 		if ( false === $asset_meta['version'] ) { // Safeguard against filemtime() returning false.
