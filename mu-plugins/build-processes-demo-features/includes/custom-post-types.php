@@ -3,7 +3,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Register custom post types.
+ * Registers custom post types.
  *
  * @since   0.1.0
  * @version 0.1.0
@@ -59,3 +59,33 @@ function bpd_features_register_book_post_type(): void {
 	register_post_type( 'book', $args );
 }
 add_action( 'init', 'bpd_features_register_book_post_type' );
+
+/**
+ * Registers and/or enqueues scripts and stylesheets specific to the book post type.
+ *
+ * @since   0.1.0
+ * @version 0.1.0
+ */
+function bpd_features_enqueue_book_post_type_frontend_assets(): void {
+	$plugin_slug = bpd_features_get_slug();
+
+	if ( is_post_type_archive( 'book' ) ) {
+		$asset_meta = bpd_features_get_asset_meta( BPD_FEATURES_DIR . 'assets/css/build/book-archive.css' );
+		wp_enqueue_style(
+			"$plugin_slug-book-archive",
+			BPD_FEATURES_URL . 'assets/css/build/book-archive.css',
+			$asset_meta['dependencies'],
+			$asset_meta['version']
+		);
+	}
+	if ( is_singular( 'book' ) ) {
+		$asset_meta = bpd_features_get_asset_meta( BPD_FEATURES_DIR . 'assets/css/build/book-singular.css' );
+		wp_enqueue_style(
+			"$plugin_slug-book-singular",
+			BPD_FEATURES_URL . 'assets/css/build/book-singular.css',
+			$asset_meta['dependencies'],
+			$asset_meta['version']
+		);
+	}
+}
+add_action( 'wp_enqueue_scripts', 'bpd_features_enqueue_book_post_type_frontend_assets' );

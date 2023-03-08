@@ -1,1 +1,0 @@
-{"version":3,"sources":["../src/extra.scss%23sass","../src/extra.scss"],"names":[],"mappings":"AAAA;ECCC,uBDAA;EACE,gBAAA;ACCH","file":"extra.css","sourcesContent":["html {\n\tscroll-behavior: smooth;\n  \tbackground: gray;\n}\n","html {\n\tscroll-behavior: smooth;\n  \tbackground: gray;\n}\n"]}

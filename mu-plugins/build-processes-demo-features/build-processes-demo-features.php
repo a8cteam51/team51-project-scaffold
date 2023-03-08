@@ -7,6 +7,8 @@
  * @author      WP Special Projects
  * @license     GPL-3.0-or-later
  *
+ * @noinspection    ALL
+ *
  * @wordpress-plugin
  * Plugin Name:             Build Processes Demo Features
  * Description:             A features plugin for a custom theme. Could include post types, metaboxes etc. Do not use for blocks!
@@ -23,17 +25,22 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// Load the features plugin's translated strings.
-function bpd_features_load_textdomain() {
-	load_muplugin_textdomain( 'build-processes-demo-features', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-}
-add_action( 'init', 'bpd_features_load_textdomain' );
+// Define plugin constants.
+function_exists( 'get_plugin_data' ) || require_once ABSPATH . 'wp-admin/includes/plugin.php';
+define( 'BPD_FEATURES_METADATA', get_plugin_data( __FILE__, false, false ) );
 
-// Load the features plugin's files.
-foreach ( glob( __DIR__ . '/includes/*.php' ) as $bpd_features_filename ) {
-	if ( preg_match( '#/includes/_#i', $bpd_features_filename ) ) {
-		continue; // Ignore files prefixed with an underscore.
+define( 'BPD_FEATURES_DIR', plugin_dir_path( __FILE__ ) );
+define( 'BPD_FEATURES_URL', plugin_dir_url( __FILE__ ) );
+
+// Include the rest of the features plugin's files if system requirements check out.
+if ( is_php_version_compatible( BPD_FEATURES_METADATA['RequiresPHP'] ) && is_wp_version_compatible( BPD_FEATURES_METADATA['RequiresWP'] ) ) {
+	require_once 'functions.php';
+
+	foreach ( glob( __DIR__ . '/includes/*.php' ) as $bpd_features_filename ) {
+		if ( preg_match( '#/includes/_#i', $bpd_features_filename ) ) {
+			continue; // Ignore files prefixed with an underscore.
+		}
+
+		include $bpd_features_filename;
 	}
-
-	include $bpd_features_filename;
 }
