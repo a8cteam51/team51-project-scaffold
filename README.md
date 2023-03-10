@@ -112,7 +112,7 @@ Contributions are welcome! Please open an issue or a pull request if you find an
 
 ## Frequently Asked Questions
 
-#### What's with the `build` and `src` folders for the `js` and `css` folders?
+### What's with the `build` and `src` folders for the `js` and `css` folders?
 
 The standardized build processes use the `@wordpress/scripts` npm package for building JS assets. As it depends on webpack, the JS assets are built into the `build` folder with the `src` folder containing the source files.
 
@@ -120,19 +120,19 @@ To keep in line with this convention, the CSS assets are also to be built into t
 
 If you don't need a build step for your single-purpose CSS and JS files, you can remove the `build` folder and move the files in the `src` folder to the root of the `css` and `js` folders. But if you're using a build process for them, as we recommend, then please use this folder structure as a convention. [Read this comment for more info](https://github.com/a8cteam51/build-processes-demo/issues/17#issuecomment-1379277392).
 
-#### Do I need to use everything in this demo project?
+### Do I need to use everything in this demo project?
 
 No, many of the files in this demo project are simply examples. You can use them as a reference, but you don't need to copy them over to your project. This applies particularly to the CSS and JS assets used in this project -- if your project doesn't use WooCommerce or doesn't need any cart-related customizations, then you don't need a `<theme>/assets/css/build/cart.css` file! 
 
 Similarly, if your project is English-only (and likely to remain so), then you don't need to include the `languages` folder and the `pot` file. And you probably don't need the build processes related to creating RTL versions of the CSS.
 
-#### Can I remove the WC Usage Tracking Auto-Opt-In git module?
+### Can I remove the WC Usage Tracking Auto-Opt-In git module?
 
 If your project isn't using WooCommerce, it might be tempting to remove the `wc-usage-tracking-auto-opt-in` git module. Over time, that module has incorporated auto-opt-in for other plugins as well, like Sensei, and is likely to keep evolving.
 
 Moreover, there is always a possibility that WooCommerce will be included at some point in the future. So it's better to keep the module in place and just ignore it. [Read more about it here](https://github.com/a8cteam51/build-processes-demo/issues/19#issuecomment-1379270537).
 
-#### Why aren't we using an .nvmrc file?
+### Why aren't we using an .nvmrc file?
 
 An .nvmrc file is used to specify the version of Node.js that should be used for a project. It allows typing `nvm use` without specifying a version argument in the project directory to automatically switch to the correct version of Node.js.
 
@@ -142,6 +142,6 @@ In order to bring down technical debt, whenever a developer works on a site and 
 
 We feel that including an .nvmrc file would be counter-productive to this goal of "forcing" maintainers to upgrade the packages and the Node.js version.
 
-#### Is this perfect and bug-free?
+### Is this perfect and bug-free?
 
 Hopefully yes, probably not! If you find any problems, please open an issue or a pull request. This project is supposed to be a living document, so we'll be updating it as we learn more.
