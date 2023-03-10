@@ -13,10 +13,16 @@ License URI:        http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain:        build-processes-demo
 Domain Path:        /languages
 Tags:               demo, build process
-
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
 */
+body {
+  line-height: 20px;
+}
+@media (max-width: 781px) {
+  body {
+    line-height: 16px;
+  }
+}
+
 /**
  * Page
  * - Description of page styles
@@ -42,5 +48,12 @@ Use it to make something cool, have fun, and share what you've learned with othe
   .wp-theme-style {
     background-color: #7ad03a;
   }
+}
+
+button {
+  padding: 8px 15px;
+}
+button:hover {
+  text-decoration: underline;
 }
 /*# sourceMappingURL=style.css.map */

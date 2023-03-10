@@ -1,1 +1,1 @@
-alert("Hey look, it works!");
+console.log("Hey look, it works!");

@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/book-singular.scss%23sass","../src/book-singular.scss"],"names":[],"mappings":"AAAA;EACE,iBAAA;ACCF","file":"book-singular.css","sourcesContent":["article.container {\n  max-width: 1200px;\n}\n","article.container {\n  max-width: 1200px;\n}\n"]}
+{"version":3,"sources":["../src/book-singular.scss%23sass","../src/book-singular.scss"],"names":[],"mappings":"AAAA;ECCC,iBDAA;ACCD","file":"book-singular.css","sourcesContent":["article.container {\n\tmax-width: 1200px;\n}\n","article.container {\n\tmax-width: 1200px;\n}\n"]}

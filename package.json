@@ -66,7 +66,7 @@
     "lint:scripts:theme": "wp-scripts lint-js themes/$npm_package_name --no-error-on-unmatched-pattern",
     "lint:scripts:mu-plugins": "wp-scripts lint-js mu-plugins --no-error-on-unmatched-pattern",
     "lint:styles": "npm-run-all --sequential lint:styles:**",
-    "lint:styles:theme": "wp-scripts lint-style themes/$npm_package_name/**/*.{css,sass,scss} !themes/$npm_package_name/style.css --allow-empty-input --report-descriptionless-disables --report-invalid-scope-disables --report-needless-disables",
+    "lint:styles:theme": "wp-scripts lint-style themes/$npm_package_name/**/*.{css,sass,scss} !themes/$npm_package_name/style*.css --allow-empty-input --report-descriptionless-disables --report-invalid-scope-disables --report-needless-disables",
     "lint:styles:mu-plugins": "wp-scripts lint-style mu-plugins/**/*.{css,sass,scss} --allow-empty-input --report-descriptionless-disables --report-invalid-scope-disables --report-needless-disables",
     "packages-update": "wp-scripts packages-update",
     "check-engines": "wp-scripts check-engines",

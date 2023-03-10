@@ -1,0 +1,9 @@
+@use "../abstracts/mixins" as *;
+
+body {
+	line-height: 20px;
+
+	@include breakpoint-down(medium) {
+		line-height: 16px;
+	}
+}

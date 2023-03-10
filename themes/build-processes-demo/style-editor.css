@@ -1,3 +1,12 @@
+body {
+  line-height: 20px;
+}
+@media (max-width: 781px) {
+  body {
+    line-height: 16px;
+  }
+}
+
 /**
  * Page
  * - Description of page styles
@@ -23,5 +32,12 @@
   .wp-theme-style {
     background-color: #7ad03a;
   }
+}
+
+button {
+  padding: 8px 15px;
+}
+button:hover {
+  text-decoration: underline;
 }
 /*# sourceMappingURL=style-editor.css.map */
