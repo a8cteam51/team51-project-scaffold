@@ -62,13 +62,21 @@ In general, any active theme on the site should contain the following folder str
 │        ├── style-editor.scss
 ├── includes/**        	# PHP files (classes, functions, etc)
 ├── languages/**       	# POT and translations folder
+├── parts/**       	    # FSE Theme template parts
+├── patterns/**       	# FSE Theme template patterns
+├── templates/**       	# FSE Theme full templates
 ├── functions.php    	# Theme functions file
 ├── style.css        	# Theme CSS file compiled from SCSS
 ├── style-editor.css	# Editor CSS file compiled from SCSS
+├── theme.json      	# Theme variable definitions
 .
 ```
 
 As for the structure of the `assets/sass` folder and of the files therein, we recommend reading [this helpful gist](https://gist.github.com/AdamMarsden/7b85e8d5bdb5bef969a0). While we don't follow the exact same structure (e.g., we would like page-specific CSS to **not** be part of `style.css`), it encapsulates the general idea of how we want to structure the SCSS files.
+
+### FSE Templates, Parts, Patterns, and `theme.json`
+
+FSE template parts are included in this to show desired folder structure only. You will likely want to start from scratch with all FSE related files to avoid battling what's already here and been filled as a placeholder demonstration only.
 
 ### Gutenberg blocks
 
