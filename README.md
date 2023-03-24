@@ -62,7 +62,7 @@ In general, any active theme on the site should contain the following folder str
 │        ├── style-editor.scss
 ├── includes/**        	# PHP files (classes, functions, etc)
 ├── languages/**       	# POT and translations folder
-├── parts/**       	  	# FSE Theme template parts
+├── parts/**            # FSE Theme template parts
 ├── patterns/**       	# FSE Theme template patterns
 ├── templates/**       	# FSE Theme full templates
 ├── functions.php    	# Theme functions file
