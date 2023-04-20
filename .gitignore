@@ -10,7 +10,6 @@
 # !themes/twentyseventeen
 #
 plugins/*
-!plugins/plugin-autoupdate-filter
 
 mu-plugins/*
 !mu-plugins/mu-loader.php
