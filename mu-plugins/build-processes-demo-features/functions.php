@@ -22,8 +22,8 @@ function bpd_features_get_slug(): string {
  * @since   0.1.0
  * @version 0.1.0
  *
- * @param   string      $asset_path             The path to the asset file.
- * @param   array|null  $extra_dependencies     Any extra dependencies to include in the returned meta.
+ * @param   string     $asset_path         The path to the asset file.
+ * @param   array|null $extra_dependencies Any extra dependencies to include in the returned meta.
  *
  * @return  array|null
  */

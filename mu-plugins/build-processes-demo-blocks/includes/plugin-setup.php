@@ -4,10 +4,13 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
- * Behind the scenes, it registers also all assets so they can be enqueued
+ * Behind the scenes, it registers also all assets, so they can be enqueued
  * through the block editor in the corresponding context.
  *
- * @see https://developer.wordpress.org/reference/functions/register_block_type/
+ * @since   0.1.0
+ * @version 0.1.0
+ *
+ * @return  void
  */
 function bpd_blocks_init(): void {
 	register_block_type( BPD_BLOCKS_DIR . 'build/foobar' );

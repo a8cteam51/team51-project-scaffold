@@ -7,6 +7,8 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since   0.1.0
  * @version 0.1.0
+ *
+ * @return  void
  */
 function bpd_features_register_book_post_type(): void {
 	// Set UI labels for Custom Post Type
@@ -65,6 +67,8 @@ add_action( 'init', 'bpd_features_register_book_post_type' );
  *
  * @since   0.1.0
  * @version 0.1.0
+ *
+ * @return  void
  */
 function bpd_features_enqueue_book_post_type_frontend_assets(): void {
 	$plugin_slug = bpd_features_get_slug();
