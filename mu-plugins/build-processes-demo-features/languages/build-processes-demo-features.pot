@@ -1,4 +1,4 @@
-# Copyright (C) 2023 WP Special Projects
+# Copyright (C) 2023 WordPress.com Special Projects
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-01-11T17:40:30+00:00\n"
+"POT-Creation-Date: 2023-05-17T10:09:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: build-processes-demo-features\n"
@@ -23,67 +23,67 @@ msgid "A features plugin for a custom theme. Could include post types, metaboxes
 msgstr ""
 
 #. Author of the plugin
-msgid "WP Special Projects"
+msgid "WordPress.com Special Projects"
 msgstr ""
 
 #. Author URI of the plugin
 msgid "https://wpspecialprojects.wordpress.com/"
 msgstr ""
 
-#: includes/custom-post-types.php:14
+#: includes/custom-post-types.php:16
 msgctxt "Post Type General Name"
 msgid "Books"
 msgstr ""
 
-#: includes/custom-post-types.php:15
+#: includes/custom-post-types.php:17
 msgid "Book"
 msgstr ""
 
-#: includes/custom-post-types.php:16
+#: includes/custom-post-types.php:18
 msgctxt "Admin Menu text"
 msgid "Books"
 msgstr ""
 
-#: includes/custom-post-types.php:17
+#: includes/custom-post-types.php:19
 msgid "All Books"
 msgstr ""
 
-#: includes/custom-post-types.php:18
+#: includes/custom-post-types.php:20
 msgid "View Book"
 msgstr ""
 
-#: includes/custom-post-types.php:19
+#: includes/custom-post-types.php:21
 msgid "Add New Book"
 msgstr ""
 
-#: includes/custom-post-types.php:20
+#: includes/custom-post-types.php:22
 msgid "Add New"
 msgstr ""
 
-#: includes/custom-post-types.php:21
+#: includes/custom-post-types.php:23
 msgid "Edit Book"
 msgstr ""
 
-#: includes/custom-post-types.php:22
+#: includes/custom-post-types.php:24
 msgid "Update Book"
 msgstr ""
 
-#: includes/custom-post-types.php:23
+#: includes/custom-post-types.php:25
 msgid "Search Book"
 msgstr ""
 
-#: includes/custom-post-types.php:24
+#: includes/custom-post-types.php:26
 msgid "Not Found"
 msgstr ""
 
-#: includes/custom-post-types.php:25
+#: includes/custom-post-types.php:27
 msgid "Not found in Trash"
 msgstr ""
 
-#: includes/custom-post-types.php:30
+#: includes/custom-post-types.php:32
 msgid "Books"
 msgstr ""
 
-#: includes/custom-post-types.php:31
+#: includes/custom-post-types.php:33
 msgid "Books catalogue"
 msgstr ""

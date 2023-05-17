@@ -14,69 +14,65 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 "X-Domain: build-processes-demo-features\n"
 
-#. Author of the plugin
-msgid "WP Special Projects"
-msgstr ""
-
 #. Author URI of the plugin
 msgid "https://wpspecialprojects.wordpress.com/"
 msgstr ""
 
-#: includes/custom-post-types.php:14
+#: includes/custom-post-types.php:16
 msgctxt "Post Type General Name"
 msgid "Books"
 msgstr "Livros"
 
-#: includes/custom-post-types.php:15
+#: includes/custom-post-types.php:17
 msgid "Book"
 msgstr "Livro"
 
-#: includes/custom-post-types.php:16
+#: includes/custom-post-types.php:18
 msgctxt "Admin Menu text"
 msgid "Books"
 msgstr "Livros"
 
-#: includes/custom-post-types.php:17
+#: includes/custom-post-types.php:19
 msgid "All Books"
 msgstr "Todos os Livros"
 
-#: includes/custom-post-types.php:18
+#: includes/custom-post-types.php:20
 msgid "View Book"
 msgstr "Ver Livro"
 
-#: includes/custom-post-types.php:19
+#: includes/custom-post-types.php:21
 msgid "Add New Book"
 msgstr "Adicionar Novo Livro"
 
-#: includes/custom-post-types.php:20
+#: includes/custom-post-types.php:22
 msgid "Add New"
 msgstr "Adicionar Novo "
 
-#: includes/custom-post-types.php:21
+#: includes/custom-post-types.php:23
 msgid "Edit Book"
 msgstr "Editar Livro"
 
-#: includes/custom-post-types.php:22
+#: includes/custom-post-types.php:24
 msgid "Update Book"
 msgstr "Atualizar Livro"
 
-#: includes/custom-post-types.php:23
+#: includes/custom-post-types.php:25
 msgid "Search Book"
 msgstr "Procurar Livro"
 
-#: includes/custom-post-types.php:24
+#: includes/custom-post-types.php:26
 msgid "Not Found"
 msgstr "Não Encontrado"
 
-#: includes/custom-post-types.php:25
+#: includes/custom-post-types.php:27
 msgid "Not found in Trash"
 msgstr "Não Encontrado na Lixeira"
 
-#: includes/custom-post-types.php:30
+#: includes/custom-post-types.php:32
 msgid "Books"
 msgstr "Livros"
 
-#: includes/custom-post-types.php:31
+#: includes/custom-post-types.php:33
 msgid "Books catalogue"
 msgstr "Catálogo de livros"
 
@@ -87,3 +83,7 @@ msgstr ""
 #. Description of the plugin
 msgid "A features plugin for a custom theme. Could include post types, metaboxes etc. Do not use for blocks!"
 msgstr "Um plugin com funcionalidades extras para um tema customizado. Pode incluir post types, metaboxes etc. Não usar para blocos!"
+
+#. Author of the plugin
+msgid "WordPress.com Special Projects"
+msgstr ""

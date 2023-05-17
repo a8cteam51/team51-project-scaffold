@@ -22,10 +22,6 @@ msgstr "Blocos de demonstração de processos de build"
 msgid "Example block scaffolded with Create Block tool."
 msgstr "Bloco de exemplo criado com o Create Block."
 
-#. Author of the plugin
-msgid "WP Special Projects"
-msgstr ""
-
 #. Author URI of the plugin
 msgid "https://wpspecialprojects.wordpress.com/"
 msgstr ""
@@ -66,3 +62,7 @@ msgstr "Bloco de exemplo criado com o Create Block."
 msgctxt "block title"
 msgid "SpamHam Block"
 msgstr "Bloco SpamHam"
+
+#. Author of the plugin
+msgid "WordPress.com Special Projects"
+msgstr ""
