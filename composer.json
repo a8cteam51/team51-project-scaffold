@@ -73,8 +73,8 @@
       "@updatepo:blocks",
       "@makejson:blocks",
 
-      "@makepot:plugin",
-      "@updatepo:plugin"
+      "@makepot:features",
+      "@updatepo:features"
     ],
 
     "makepot:theme": "wp i18n make-pot themes/build-processes-demo",
@@ -86,9 +86,9 @@
     "makejson:blocks": "wp i18n make-json mu-plugins/build-processes-demo-blocks/languages --pretty-print --no-purge",
     "makemo:blocks": "wp i18n make-mo mu-plugins/build-processes-demo-blocks/languages",
 
-    "makepot:plugin": "wp i18n make-pot mu-plugins/build-processes-demo-features",
-    "updatepo:plugin": "wp i18n update-po mu-plugins/build-processes-demo-features/languages/build-processes-demo-features.pot",
-    "makemo:plugin": "wp i18n make-mo mu-plugins/build-processes-demo-features/languages",
+    "makepot:features": "wp i18n make-pot mu-plugins/build-processes-demo-features",
+    "updatepo:features": "wp i18n update-po mu-plugins/build-processes-demo-features/languages/build-processes-demo-features.pot",
+    "makemo:features": "wp i18n make-mo mu-plugins/build-processes-demo-features/languages",
 
     "packages-install": "@composer install --ignore-platform-reqs --no-interaction",
     "packages-update": [
