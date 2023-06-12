@@ -42,8 +42,13 @@ if ( is_php_version_compatible( BPD_BLOCKS_METADATA['RequiresPHP'] ) && is_wp_ve
 	bpd_blocks_include_files( '/src/*/*.php' );
 }
 
-
-function bpd_blocks_include_files( $directory ) {
+/**
+ * Include all files in a given directory.
+ *
+ * @param string $directory The directory to include files from.
+ * @return void
+ */
+function bpd_blocks_include_files( $directory ): void {
 	foreach ( glob( __DIR__ . $directory ) as $filename ) {
 		if ( ! preg_match( '#/_#i', $filename ) ) {
 			include $filename;
