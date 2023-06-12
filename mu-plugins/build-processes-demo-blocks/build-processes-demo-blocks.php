@@ -34,11 +34,19 @@ define( 'BPD_BLOCKS_URL', plugin_dir_url( __FILE__ ) );
 
 // Include the rest of the blocks plugin's files if system requirements check out.
 if ( is_php_version_compatible( BPD_BLOCKS_METADATA['RequiresPHP'] ) && is_wp_version_compatible( BPD_BLOCKS_METADATA['RequiresWP'] ) ) {
-	foreach ( glob( __DIR__ . '/includes/*.php' ) as $bpd_blocks_filename ) {
-		if ( preg_match( '#/includes/_#i', $bpd_blocks_filename ) ) {
-			continue; // Ignore files prefixed with an underscore.
-		}
 
-		include $bpd_blocks_filename;
+	// Block plugin files.
+	bpd_blocks_include_files( '/includes/*.php' );
+
+	// Individual block files.
+	bpd_blocks_include_files( '/src/*/*.php' );
+}
+
+
+function bpd_blocks_include_files( $directory ) {
+	foreach ( glob( __DIR__ . $directory ) as $filename ) {
+		if ( ! preg_match( '#/_#i', $filename ) ) {
+			include $filename;
+		}
 	}
 }
