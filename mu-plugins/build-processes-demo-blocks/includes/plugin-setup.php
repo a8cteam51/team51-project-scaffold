@@ -13,8 +13,17 @@ defined( 'ABSPATH' ) || exit;
  * @return  void
  */
 function bpd_blocks_init(): void {
-	register_block_type( BPD_BLOCKS_DIR . 'build/foobar' );
-	register_block_type( BPD_BLOCKS_DIR . 'build/spamham' );
+	foreach ( glob( BPD_BLOCKS_DIR . 'build/*', GLOB_ONLYDIR ) as $block_dir ) {
+		$basename = basename( $block_dir );
+		$callback = 'bpd_blocks_render_block_' . str_replace( '-', '_', $basename );
+
+		$args = array();
+		if ( function_exists( $callback ) ) {
+			$args['render_callback'] = $callback;
+		}
+
+		register_block_type( $block_dir, $args );
+	}
 }
 add_action( 'init', 'bpd_blocks_init' );
 
