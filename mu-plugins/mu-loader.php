@@ -8,9 +8,18 @@
 
 defined( 'ABSPATH' ) || exit;
 
-foreach ( glob( __DIR__ . '/*', GLOB_ONLYDIR ) as $bpd_mu_plugin_dir ) {
-	$bpd_plugin = $bpd_mu_plugin_dir . DIRECTORY_SEPARATOR . basename( $bpd_mu_plugin_dir ) . '.php';
-	if ( file_exists( $bpd_plugin ) ) {
-		require_once $bpd_plugin;
+require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+foreach ( glob( WPMU_PLUGIN_DIR . '/*/*.php' ) as $t51_file ) {
+	if ( ! is_readable( $t51_file ) ) {
+		continue;
 	}
+
+	$t51_plugin_data = get_plugin_data( $t51_file, false, false );
+
+	if ( empty( $t51_plugin_data['Name'] ) ) {
+		continue;
+	}
+
+	include_once $t51_file;
 }
