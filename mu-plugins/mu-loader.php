@@ -10,16 +10,16 @@ defined( 'ABSPATH' ) || exit;
 
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-foreach ( glob( WPMU_PLUGIN_DIR . '/*/*.php' ) as $file ) {
-	if ( ! is_readable( $file ) ) {
+foreach ( glob( WPMU_PLUGIN_DIR . '/*/*.php' ) as $t51_file ) {
+	if ( ! is_readable( $t51_file ) ) {
 		continue;
 	}
 
-	$plugin_data = get_plugin_data( $file, false, false );
+	$t51_plugin_data = get_plugin_data( $t51_file, false, false );
 
-	if ( empty( $plugin_data['Name'] ) ) {
+	if ( empty( $t51_plugin_data['Name'] ) ) {
 		continue;
 	}
 
-	include_once $file;
+	include_once $t51_file;
 }
