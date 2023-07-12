@@ -10,18 +10,11 @@ defined( 'ABSPATH' ) || exit;
 
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-foreach ( glob( WPMU_PLUGIN_DIR . '/*/*.php' ) as $t51_file ) {
-	if ( ! is_readable( $t51_file ) ) {
-		continue;
+foreach ( glob( WPMU_PLUGIN_DIR . '/*/*.php' ) as $bpd_mu_plugin_file ) {
+	$bpd_mu_plugin_data = get_plugin_data( $bpd_mu_plugin_file, false, false );
+	if ( ! empty( $bpd_mu_plugin_data['Name'] ) ) {
+		require_once $bpd_mu_plugin_file;
 	}
-
-	$t51_plugin_data = get_plugin_data( $t51_file, false, false );
-
-	if ( empty( $t51_plugin_data['Name'] ) ) {
-		continue;
-	}
-
-	include_once $t51_file;
 }
 
 /**
