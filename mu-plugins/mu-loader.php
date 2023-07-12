@@ -14,3 +14,27 @@ foreach ( glob( __DIR__ . '/*', GLOB_ONLYDIR ) as $bpd_mu_plugin_dir ) {
 		require_once $bpd_plugin;
 	}
 }
+
+/**
+ * Adds the mu-plugins to the plugins list.
+ *
+ * @param array $plugins An array of plugins to list.
+ *
+ * @return array
+ */
+function t51_mu_plugin_filter( array $plugins ): array {
+	unset( $plugins['mustuse']['mu-loader.php'] );
+
+	foreach ( glob( WPMU_PLUGIN_DIR . '/*/*.php' ) as $file ) {
+		$plugin_data = get_plugin_data( $file, false, false );
+
+		if ( empty( $plugin_data['Name'] ) ) {
+			continue;
+		}
+
+		$plugins['mustuse'][ basename( $file ) ] = $plugin_data;
+	}
+
+	return $plugins;
+}
+add_filter( 'plugins_list', 't51_mu_plugin_filter' );
