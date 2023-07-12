@@ -18,25 +18,24 @@ foreach ( glob( WPMU_PLUGIN_DIR . '/*/*.php' ) as $bpd_mu_plugin_file ) {
 }
 
 /**
- * Adds the mu-plugins to the plugins list.
+ * Adds the mu-plugins to the admin plugins list.
  *
- * @param array $plugins An array of plugins to list.
+ * @param   array $plugins An array of plugins to list.
  *
- * @return array
+ * @return  array
  */
-function t51_mu_plugin_filter( array $plugins ): array {
-	unset( $plugins['mustuse']['mu-loader.php'] );
+add_filter(
+	'plugins_list',
+	static function ( array $plugins ): array {
+		unset( $plugins['mustuse']['mu-loader.php'] ); // Remove this file from the list.
 
-	foreach ( glob( WPMU_PLUGIN_DIR . '/*/*.php' ) as $file ) {
-		$plugin_data = get_plugin_data( $file, false, false );
-
-		if ( empty( $plugin_data['Name'] ) ) {
-			continue;
+		foreach ( glob( WPMU_PLUGIN_DIR . '/*/*.php' ) as $file ) {
+			$plugin_data = get_plugin_data( $file, false, false );
+			if ( ! empty( $plugin_data['Name'] ) ) {
+				$plugins['mustuse'][ basename( $file ) ] = $plugin_data;
+			}
 		}
 
-		$plugins['mustuse'][ basename( $file ) ] = $plugin_data;
+		return $plugins;
 	}
-
-	return $plugins;
-}
-add_filter( 'plugins_list', 't51_mu_plugin_filter' );
+);
