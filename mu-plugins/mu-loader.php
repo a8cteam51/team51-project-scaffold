@@ -2,8 +2,8 @@
 /**
  * By default, WordPress will load all files in the mu-plugins directory and ignore all the directories inside.
  *
- * This file is a workaround which will load all the plugins in the mu-plugins directory which follow the naming
- * convention of `plugin-name/plugin-name.php`.
+ * This file is a workaround which will load all the plugins in the mu-plugins directory which have a root-level file
+ * containing a plugin header (@link https://developer.wordpress.org/plugins/plugin-basics/header-requirements/).
  */
 
 defined( 'ABSPATH' ) || exit;
