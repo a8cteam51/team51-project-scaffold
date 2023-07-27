@@ -134,9 +134,9 @@ No, many of the files in this demo project are simply examples. You can use them
 
 Similarly, if your project is English-only (and likely to remain so), then you don't need to include the `languages` folder and the `pot` file. And you probably don't need the build processes related to creating RTL versions of the CSS.
 
-### Can I remove the WC Usage Tracking Auto-Opt-In git module?
+### Can I remove the Team51 Tracking git module?
 
-If your project isn't using WooCommerce, it might be tempting to remove the `wc-usage-tracking-auto-opt-in` git module. Over time, that module has incorporated auto-opt-in for other plugins as well, like Sensei, and is likely to keep evolving.
+If your project isn't using WooCommerce, it might be tempting to remove the `team51-tracking` git module. Over time, that module has incorporated auto-opt-in for other plugins as well, like Sensei, and is likely to keep evolving.
 
 Moreover, there is always a possibility that WooCommerce will be included at some point in the future. So it's better to keep the module in place and just ignore it. [Read more about it here](https://github.com/a8cteam51/build-processes-demo/issues/19#issuecomment-1379270537).
 
