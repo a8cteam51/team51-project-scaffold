@@ -1,6 +1,6 @@
 [submodule "mu-plugins/colophon"]
 	path = mu-plugins/colophon
 	url = https://github.com/a8cteam51/colophon
-[submodule "mu-plugins/wc-usage-tracking-auto-opt-in"]
-	path = mu-plugins/wc-usage-tracking-auto-opt-in
-	url = https://github.com/a8cteam51/wc-usage-tracking-auto-opt-in
+[submodule "mu-plugins/team51-tracking"]
+	path = mu-plugins/team51-tracking
+	url = https://github.com/a8cteam51/team51-tracking
