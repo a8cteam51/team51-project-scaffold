@@ -1,0 +1,43 @@
+name: JS and CSS Coding Standards
+
+on:
+  push:
+    branches: [ trunk, develop ]
+  pull_request:
+    branches: [ trunk, develop ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Adding Node.js setup to run JS and CSS linters
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.15'  # project version
+
+      - name: Get npm cache directory
+        id: npm-cache
+        run: echo "::set-output name=dir::$(npm config get cache)"
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+            ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install NPM dependencies
+        run: npm install
+
+      - name: Run JS linter
+        run: npm run lint:scripts
+
+      - name: Run CSS linter
+        run: npm run lint:styles
