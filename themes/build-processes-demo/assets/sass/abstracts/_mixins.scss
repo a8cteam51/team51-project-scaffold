@@ -3,6 +3,7 @@
 
 // Media query "greater than $breakpoint".
 @mixin breakpoint-up($breakpoint) {
+
 	@if map.has-key($breakpoints, $breakpoint) {
 		$breakpoint-value: map.get($breakpoints, $breakpoint);
 
@@ -10,12 +11,14 @@
 			@content;
 		}
 	} @else {
+
 		@warn "Undefined Breakpoint: (#{$breakpoint}). Available breakpoints: #{map.keys($breakpoints)}";
 	}
 }
 
 // Media query "less than $breakpoint".
 @mixin breakpoint-down($breakpoint) {
+
 	@if map.has-key($breakpoints, $breakpoint) {
 		$breakpoint-value: map.get($breakpoints, $breakpoint);
 
@@ -23,12 +26,14 @@
 			@content;
 		}
 	} @else {
+
 		@warn "Undefined Breakpoint: (#{$breakpoint}). Available breakpoints: #{map.keys($breakpoints)}";
 	}
 }
 
 // Media query "between $a and $b".
 @mixin breakpoint-between($a, $b) {
+
 	@if map.has-key($breakpoints, $a) and map.has-key($breakpoints, $b) {
 		$breakpoint-a: map.get($breakpoints, $a);
 		$breakpoint-b: map.get($breakpoints, $b);
@@ -37,10 +42,14 @@
 			@content;
 		}
 	} @else {
+
 		@if (map.has-key($breakpoints, $a) == false) {
+
 			@warn "Undefined Breakpoint: #{$a}. Available breakpoints: #{map.keys($breakpoints)}";
 		}
+
 		@if (map.has-key($breakpoints, $b) == false) {
+
 			@warn "Undefined Breakpoint: #{$b}. Available breakpoints: #{map.keys($breakpoints)}";
 		}
 	}
