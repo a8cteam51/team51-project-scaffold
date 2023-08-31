@@ -15,7 +15,7 @@ jobs:
 
       # Adding Node.js setup to run JS and CSS linters
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '18.15'  # project version
 
@@ -24,7 +24,7 @@ jobs:
         run: echo "::set-output name=dir::$(npm config get cache)"
 
       - name: Cache npm dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             **/node_modules
@@ -34,7 +34,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install NPM dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run JS linter
         run: npm run lint:scripts
