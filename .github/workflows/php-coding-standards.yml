@@ -42,3 +42,21 @@ jobs:
 
       - name: Run PHP_CodeSniffer
         run: composer run-script lint:php
+
+      - name: Get list of changed files
+        id: get-changed-files
+        run: |
+          git fetch origin ${{ github.base_ref }}
+          echo "changed_files<<EOF" >> $GITHUB_ENV
+          git diff --name-only origin/${{ github.base_ref }}..${{ github.sha }} >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Run PHP_CodeSniffer on changed files
+        run: |
+          for file in $changed_files
+          do
+            if [[ $file == *.php ]]
+            then
+              composer run-script lint:php:file -- $file
+            fi
+          done

@@ -53,6 +53,7 @@
     "format:php:theme": "phpcbf --standard=./themes/build-processes-demo/.phpcs.xml --basepath=. ./themes/build-processes-demo -v",
     "format:php:blocks": "phpcbf --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml --basepath=. ./mu-plugins/build-processes-demo-blocks -v",
     "format:php:features": "phpcbf --standard=./mu-plugins/build-processes-demo-features/.phpcs.xml --basepath=. ./mu-plugins/build-processes-demo-features -v",
+    "format:php:file": "phpcbf --standard=./.phpcs.xml --basepath=. -v $*",
 
     "lint:php": [
       "@lint:php:theme",
@@ -62,6 +63,7 @@
     "lint:php:theme": "phpcs --standard=./themes/build-processes-demo/.phpcs.xml --basepath=. ./themes/build-processes-demo -v",
     "lint:php:blocks": "phpcs --standard=./mu-plugins/build-processes-demo-blocks/.phpcs.xml --basepath=. ./mu-plugins/build-processes-demo-blocks -v",
     "lint:php:features": "phpcs --standard=./mu-plugins/build-processes-demo-features/.phpcs.xml --basepath=. ./mu-plugins/build-processes-demo-features -v",
+    "lint:php:file": "phpcs --standard=./.phpcs.xml --basepath=. -v $*",
 
     "internationalize": [
       "@makepot:theme",
