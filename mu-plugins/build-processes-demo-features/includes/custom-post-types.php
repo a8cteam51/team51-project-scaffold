@@ -51,6 +51,10 @@ function bpd_features_register_book_post_type(): void {
 		'menu_position'       => 5,
 		'can_export'          => true,
 		'has_archive'         => true,
+		'rewrite'             => array(
+			'slug'       => 'book',
+			'with_front' => false,
+		),
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
