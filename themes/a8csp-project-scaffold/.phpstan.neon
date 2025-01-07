@@ -1,0 +1,10 @@
+includes:
+    - %currentWorkingDirectory%/vendor/a8cteam51/team51-configs/quality-assurance/phpstan.dist.neon
+
+parameters:
+    scanDirectories:
+        - %currentWorkingDirectory%/plugins
+    paths:
+        - %currentWorkingDirectory%/themes/a8csp-project-scaffold
+    WPCompat:
+        pluginFile: %currentWorkingDirectory%/themes/a8csp-project-scaffold/style.css

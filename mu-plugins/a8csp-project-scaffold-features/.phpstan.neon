@@ -1,0 +1,10 @@
+includes:
+    - %currentWorkingDirectory%/vendor/a8cteam51/team51-configs/quality-assurance/phpstan.dist.neon
+
+parameters:
+    scanDirectories:
+        - %currentWorkingDirectory%/plugins
+    paths:
+        - %currentWorkingDirectory%/mu-plugins/a8csp-project-scaffold-features
+    WPCompat:
+        pluginFile: %currentWorkingDirectory%/mu-plugins/a8csp-project-scaffold-features/a8csp-project-scaffold-features.php

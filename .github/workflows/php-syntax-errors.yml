@@ -10,7 +10,7 @@ jobs:
   lint-php-files:
     strategy:
       matrix:
-        php: [ 8.2, 8.3 ] # Include all PHP versions between the site's current version and the latest release version.
+        php: [ 8.2, 8.3, 8.4 ] # Include all PHP versions between the site's current version and the latest release version.
 
     runs-on: ubuntu-latest
     timeout-minutes: 5

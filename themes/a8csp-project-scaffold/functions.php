@@ -23,30 +23,37 @@ function a8csp_get_theme_slug(): string {
  * as the given asset file whose contents are returns if it exists. If not, it returns an array with the file's last modified
  * time as the version and the main stylesheet + any extra dependencies passed in as the dependencies.
  *
- * @param   string     $asset_path         The path to the asset file.
- * @param   array|null $extra_dependencies Any extra dependencies to include in the returned meta.
+ * @param   string        $asset_path         The path to the asset file.
+ * @param   string[]|null $extra_dependencies Any extra dependencies to include in the returned meta.
  *
- * @return  array|null
+ * @return  array{ version: string, dependencies: array<string> }|null
  */
 function a8csp_get_theme_asset_meta( string $asset_path, ?array $extra_dependencies = null ): ?array {
-	if ( ! file_exists( $asset_path ) || ! str_starts_with( $asset_path, get_stylesheet_directory() ) ) {
+	$asset_path = str_starts_with( $asset_path, get_stylesheet_directory() ) ? $asset_path : get_stylesheet_directory() . "/$asset_path";
+	if ( ! file_exists( $asset_path ) ) {
 		return null;
 	}
 
-	$asset_path_info = pathinfo( $asset_path );
-	if ( file_exists( $asset_path_info['dirname'] . '/' . $asset_path_info['filename'] . '.asset.php' ) ) {
-		$asset_meta  = require $asset_path_info['dirname'] . '/' . $asset_path_info['filename'] . '.asset.php';
-		$asset_meta += array( 'dependencies' => array() ); // Ensure 'dependencies' key exists.
-	} else {
-		$asset_meta = array(
-			'dependencies' => array(),
-			'version'      => filemtime( $asset_path ),
-		);
-		if ( 'css' === $asset_path_info['extension'] && get_theme_file_path( 'style.css' ) !== $asset_path ) {
-			$asset_meta['dependencies'][] = a8csp_get_theme_slug() . '-style';
+	$asset_meta = array(
+		'dependencies' => array(),
+		'version'      => (string) filemtime( $asset_path ),
+	);
+	if ( '' === $asset_meta['version'] ) {
+		$asset_meta['version'] = wp_get_theme()->get( 'Version' );
+	}
+
+	$asset_pathinfo              = pathinfo( $asset_path );
+	$asset_pathinfo['dirname'] ??= '';
+
+	$asset_meta_file = "{$asset_pathinfo['dirname']}/{$asset_pathinfo['filename']}.asset.php";
+	if ( file_exists( $asset_meta_file ) ) {
+		$asset_meta_generated = require $asset_meta_file;
+
+		if ( isset( $asset_meta_generated['version'] ) ) {
+			$asset_meta['version'] = $asset_meta_generated['version'];
 		}
-		if ( false === $asset_meta['version'] ) { // Safeguard against filemtime() returning false.
-			$asset_meta['version'] = wp_get_theme()->get( 'Version' );
+		if ( isset( $asset_meta_generated['dependencies'] ) ) {
+			$asset_meta['dependencies'] = $asset_meta_generated['dependencies'];
 		}
 	}
 
@@ -59,10 +66,13 @@ function a8csp_get_theme_asset_meta( string $asset_path, ?array $extra_dependenc
 }
 
 // Include the rest of the theme's files.
-foreach ( glob( __DIR__ . '/includes/*.php' ) as $a8csp_filename ) {
-	if ( preg_match( '#/includes/_#i', $a8csp_filename ) ) {
-		continue; // Ignore files prefixed with an underscore.
-	}
+$a8csp_theme_files = glob( __DIR__ . '/includes/*.php' );
+if ( false !== $a8csp_theme_files ) {
+	foreach ( $a8csp_theme_files as $a8csp_filename ) {
+		if ( 1 === preg_match( '#/includes/_#i', $a8csp_filename ) ) {
+			continue; // Ignore files prefixed with an underscore.
+		}
 
-	include $a8csp_filename;
+		include $a8csp_filename;
+	}
 }

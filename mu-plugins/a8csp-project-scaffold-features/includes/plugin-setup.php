@@ -10,6 +10,9 @@ defined( 'ABSPATH' ) || exit;
  * @return  void
  */
 function a8csp_features_load_textdomain(): void {
-	load_muplugin_textdomain( A8CSP_FEATURES_METADATA['TextDomain'], dirname( plugin_basename( A8CSP_FEATURES_DIR ) ) . A8CSP_FEATURES_METADATA['DomainPath'] );
+	load_muplugin_textdomain(
+		a8csp_features_get_metadata( 'TextDomain' ),
+		dirname( plugin_basename( constant( 'A8CSP_FEATURES_DIR_PATH' ) ) ) . a8csp_features_get_metadata( 'DomainPath' )
+	);
 }
 add_action( 'init', 'a8csp_features_load_textdomain' );

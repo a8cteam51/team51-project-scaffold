@@ -3,6 +3,35 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Returns the mu-plugin's metadata.
+ *
+ * @template PluginMetaKey of key-of<PluginMetaData>
+ *
+ * @param   PluginMetaKey|null $property Optional. The property to return. Default all.
+ *
+ * @return  ($property is null ? PluginMetaData : ($property is PluginMetaKey ? PluginMetaData[PluginMetaKey] : null))
+ */
+function a8csp_features_get_metadata( ?string $property = null ) {
+	static $plugin_data = null;
+
+	if ( null === $plugin_data ) {
+		if ( ! function_exists( 'get_plugin_data' ) ) {
+			/* @phpstan-ignore requireOnce.fileNotFound */
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
+		$plugin_data = get_plugin_data( __DIR__ . '/a8csp-project-scaffold-features.php' );
+	}
+
+	$metadata = $plugin_data;
+	if ( null === $property ) {
+		return $metadata;
+	}
+
+	return $metadata[ $property ] ?? null;
+}
+
+/**
  * Returns the plugin's slug.
  *
  * @return  string
@@ -16,27 +45,37 @@ function a8csp_features_get_slug(): string {
  * as the given asset file whose contents are returns if it exists. If not, it returns an array with the file's last modified
  * time as the version and the main stylesheet + any extra dependencies passed in as the dependencies.
  *
- * @param   string     $asset_path         The path to the asset file.
- * @param   array|null $extra_dependencies Any extra dependencies to include in the returned meta.
+ * @param   string        $asset_path         The path to the asset file.
+ * @param   string[]|null $extra_dependencies Any extra dependencies to include in the returned meta.
  *
- * @return  array|null
+ * @return  array{ version: string, dependencies: array<string> }|null
  */
 function a8csp_features_get_asset_meta( string $asset_path, ?array $extra_dependencies = null ): ?array {
-	if ( ! file_exists( $asset_path ) || ! str_starts_with( $asset_path, A8CSP_FEATURES_DIR ) ) {
+	$asset_path = str_starts_with( $asset_path, constant( 'A8CSP_FEATURES_DIR_PATH' ) ) ? $asset_path : constant( 'A8CSP_FEATURES_DIR_PATH' ) . $asset_path;
+	if ( ! file_exists( $asset_path ) ) {
 		return null;
 	}
 
-	$asset_path_info = pathinfo( $asset_path );
-	if ( file_exists( $asset_path_info['dirname'] . '/' . $asset_path_info['filename'] . '.asset.php' ) ) {
-		$asset_meta  = require $asset_path_info['dirname'] . '/' . $asset_path_info['filename'] . '.asset.php';
-		$asset_meta += array( 'dependencies' => array() ); // Ensure 'dependencies' key exists.
-	} else {
-		$asset_meta = array(
-			'dependencies' => array(),
-			'version'      => filemtime( $asset_path ),
-		);
-		if ( false === $asset_meta['version'] ) { // Safeguard against filemtime() returning false.
-			$asset_meta['version'] = A8CSP_FEATURES_METADATA['Version'];
+	$asset_meta = array(
+		'dependencies' => array(),
+		'version'      => (string) filemtime( $asset_path ),
+	);
+	if ( '' === $asset_meta['version'] ) {
+		$asset_meta['version'] = a8csp_features_get_metadata( 'Version' );
+	}
+
+	$asset_pathinfo              = pathinfo( $asset_path );
+	$asset_pathinfo['dirname'] ??= '';
+
+	$asset_meta_file = "{$asset_pathinfo['dirname']}/{$asset_pathinfo['filename']}.asset.php";
+	if ( file_exists( $asset_meta_file ) ) {
+		$asset_meta_generated = require $asset_meta_file;
+
+		if ( isset( $asset_meta_generated['version'] ) ) {
+			$asset_meta['version'] = $asset_meta_generated['version'];
+		}
+		if ( isset( $asset_meta_generated['dependencies'] ) ) {
+			$asset_meta['dependencies'] = $asset_meta_generated['dependencies'];
 		}
 	}
 

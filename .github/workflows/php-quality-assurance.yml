@@ -10,7 +10,7 @@ jobs:
   lint-php-files:
     strategy:
       matrix:
-        php: [ 8.2 ]
+        php: [ 8.3 ]
 
     runs-on: ubuntu-latest
     timeout-minutes: 3
@@ -41,5 +41,5 @@ jobs:
       - name: Install dependencies
         run: composer run-script packages-install
 
-      - name: Run PHP_CodeSniffer
+      - name: Run QA tools
         run: composer run-script lint:php

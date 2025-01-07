@@ -32,13 +32,9 @@
   },
   "require-dev": {
     "a8cteam51/team51-configs": "dev-trunk",
-
-    "wpackagist-plugin/woocommerce": "*",
-
     "wp-cli/i18n-command": "^2.6",
 
-    "wp-coding-standards/wpcs": "^3",
-    "phpcompatibility/phpcompatibility-wp": "*",
+    "wpackagist-plugin/woocommerce": "*",
 
     "roave/security-advisories": "dev-latest"
   },
@@ -48,15 +44,30 @@
       "@format:php:theme",
       "@format:php:features"
     ],
-    "format:php:theme": "phpcbf --standard=./themes/a8csp-project-scaffold/.phpcs.xml.dist --basepath=. ./themes/a8csp-project-scaffold -v",
-    "format:php:features": "phpcbf --standard=./mu-plugins/a8csp-project-scaffold-features/.phpcs.xml.dist --basepath=. ./mu-plugins/a8csp-project-scaffold-features -v",
+    "format:php:theme": "phpcbf --standard=./themes/a8csp-project-scaffold/.phpcs.xml --basepath=. ./themes/a8csp-project-scaffold -v",
+    "format:php:features": "phpcbf --standard=./mu-plugins/a8csp-project-scaffold-features/.phpcs.xml --basepath=. ./mu-plugins/a8csp-project-scaffold-features -v",
 
     "lint:php": [
       "@lint:php:theme",
       "@lint:php:features"
     ],
-    "lint:php:theme": "phpcs --standard=./themes/a8csp-project-scaffold/.phpcs.xml.dist --basepath=. ./themes/a8csp-project-scaffold -v",
-    "lint:php:features": "phpcs --standard=./mu-plugins/a8csp-project-scaffold-features/.phpcs.xml.dist --basepath=. ./mu-plugins/a8csp-project-scaffold-features -v",
+    "lint:php:theme": [
+      "@lint:php:theme:phpcs",
+      "@lint:php:theme:phpmd",
+      "@lint:php:theme:phpstan"
+    ],
+    "lint:php:theme:phpcs": "phpcs --standard=./themes/a8csp-project-scaffold/.phpcs.xml --basepath=. ./themes/a8csp-project-scaffold -v",
+    "lint:php:theme:phpmd": "phpmd ./themes/a8csp-project-scaffold ansi ./themes/a8csp-project-scaffold/.phpmd.xml -v",
+    "lint:php:theme:phpstan": "phpstan analyse -c ./themes/a8csp-project-scaffold/.phpstan.neon -v --memory-limit=1G",
+
+    "lint:php:features": [
+      "@lint:php:features:phpcs",
+      "@lint:php:features:phpmd",
+      "@lint:php:features:phpstan"
+    ],
+    "lint:php:features:phpcs": "phpcs --standard=./mu-plugins/a8csp-project-scaffold-features/.phpcs.xml --basepath=. ./mu-plugins/a8csp-project-scaffold-features -v",
+    "lint:php:features:phpmd": "phpmd ./mu-plugins/a8csp-project-scaffold-features ansi ./mu-plugins/a8csp-project-scaffold-features/.phpmd.xml -v",
+    "lint:php:features:phpstan": "phpstan analyse -c ./mu-plugins/a8csp-project-scaffold-features/.phpstan.neon -v --memory-limit=1G",
 
     "internationalize": [
       "@makepot:theme",
@@ -83,7 +94,8 @@
   "config": {
     "allow-plugins": {
       "composer/*": true,
-      "dealerdirect/phpcodesniffer-composer-installer": true
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "phpstan/extension-installer": true
     }
   },
 

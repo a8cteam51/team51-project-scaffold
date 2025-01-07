@@ -5,6 +5,7 @@
  * @since       0.1.0
  * @version     0.1.0
  * @author      Automattic Special Projects
+ * @package     A8CSP_Project_Scaffold_Features
  * @license     GPL-3.0-or-later
  *
  * @noinspection    ALL
@@ -26,21 +27,21 @@
 defined( 'ABSPATH' ) || exit;
 
 // Define plugin constants.
-function_exists( 'get_plugin_data' ) || require_once ABSPATH . 'wp-admin/includes/plugin.php';
-define( 'A8CSP_FEATURES_METADATA', get_plugin_data( __FILE__, false, false ) );
-
-define( 'A8CSP_FEATURES_DIR', plugin_dir_path( __FILE__ ) );
-define( 'A8CSP_FEATURES_URL', plugin_dir_url( __FILE__ ) );
+define( 'A8CSP_FEATURES_DIR_PATH', plugin_dir_path( __FILE__ ) );
+define( 'A8CSP_FEATURES_DIR_URL', plugin_dir_url( __FILE__ ) );
 
 // Include the rest of the features plugin's files if system requirements check out.
-if ( is_php_version_compatible( A8CSP_FEATURES_METADATA['RequiresPHP'] ) && is_wp_version_compatible( A8CSP_FEATURES_METADATA['RequiresWP'] ) ) {
-	require_once 'functions.php';
+require_once __DIR__ . '/functions.php';
 
-	foreach ( glob( __DIR__ . '/includes/*.php' ) as $a8csp_features_filename ) {
-		if ( preg_match( '#/includes/_#i', $a8csp_features_filename ) ) {
-			continue; // Ignore files prefixed with an underscore.
+if ( is_php_version_compatible( a8csp_features_get_metadata( 'RequiresPHP' ) ) && is_wp_version_compatible( a8csp_features_get_metadata( 'RequiresWP' ) ) ) {
+	$a8csp_features_files = glob( __DIR__ . '/includes/*.php' );
+	if ( false !== $a8csp_features_files ) {
+		foreach ( $a8csp_features_files as $a8csp_features_filename ) {
+			if ( 1 === preg_match( '#/includes/_#i', $a8csp_features_filename ) ) {
+				continue; // Ignore files prefixed with an underscore.
+			}
+
+			include $a8csp_features_filename;
 		}
-
-		include $a8csp_features_filename;
 	}
 }
