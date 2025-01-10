@@ -61,7 +61,7 @@ function a8csp_features_register_book_post_type(): void {
 
 	register_post_type( 'book', $args );
 }
-add_action( 'init', 'a8csp_features_register_book_post_type' );
+add_action( 'init_foobar', 'a8csp_features_register_book_post_type' ); // `_foobar` so it doesn't actually display in production if the function is not removed.
 
 /**
  * Registers and/or enqueues scripts and stylesheets specific to the book post type.
