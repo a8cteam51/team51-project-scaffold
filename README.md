@@ -16,7 +16,7 @@ As a rule of thumb, if there is another source of updates for a piece of code, i
 
 ### Theme Structure
 
-This demo project contains a Block Theme called `build-processes-demo` which is setup to work with all build processes set out in `composer.json` and `package.json`. This theme is a recommendation of structure only. You can modify or replace this as needed if needed. [Block Canvas](https://github.com/Automattic/themes/tree/trunk/block-canvas) is also an excellent starter theme you can consider.
+This demo project contains a Block Theme called `a8csp-project-scaffold` which is setup to work with all build processes set out in `composer.json` and `package.json`. This theme is a recommendation of structure only. You can modify or replace this as needed if needed. [Block Canvas](https://github.com/Automattic/themes/tree/trunk/block-canvas) is also an excellent starter theme you can consider.
 
 In general, any active theme on the site should contain the following folder structure:
 
@@ -25,11 +25,11 @@ In general, any active theme on the site should contain the following folder str
 ├── assets           	# Main assets folder
 │   ├── img/**         	  # Image assets folder
 │   └── css            	  # Single-purpose CSS assets folder
-│        ├── build/**       		    
-│        └── src/**         		    
+│        ├── build/**
+│        └── src/**
 │   ├── js             	  # JS assets folder
-│        ├── build/**       		    
-│        └── src/**         			
+│        ├── build/**
+│        └── src/**
 │   ├── sass           	  # SCSS folder for the main stylesheet
 │        ├── abstracts/
 │        	├── _variables.scss
@@ -42,7 +42,7 @@ In general, any active theme on the site should contain the following folder str
 │        	├── _reset.scss
 │        	├── _typography.scss
 │        	├── ...
-│        	└── _utilities.scss      
+│        	└── _utilities.scss
 │        ├── components/
 │        	├── _buttons.scss
 │        	├── _forms.scss
@@ -54,9 +54,9 @@ In general, any active theme on the site should contain the following folder str
 │        	├── _footer.scss
 │        	├── _sidebar.scss
 │        	├── ...
-│        	└── _content.scss  
+│        	└── _content.scss
 │        ├── ...
-│        ├── style.scss 
+│        ├── style.scss
 │        ├── style-editor.scss
 ├── includes/**        	# PHP files (classes, functions, etc)
 ├── languages/**       	# POT and translations folder
@@ -82,7 +82,7 @@ Custom blocks should now use the [WPCom Special Projects Blocks Monorepo](https:
 
 ### Features plugin
 
-As part of the effort to decouple the theme from the site's functionality, we are also requiring a features plugin that contains all the custom functionality of the site. The demo project contains a plugin called `build-processes-demo-features` which contains a custom post type registration and some basic scaffolding.
+As part of the effort to decouple the theme from the site's functionality, we are also requiring a features plugin that contains all the custom functionality of the site. The demo project contains a plugin called `a8csp-project-scaffold-features` which contains a custom post type registration and some basic scaffolding.
 
 As far as the mu-plugin's assets are concerned, these follows the same folder structure as the theme (see above).
 
@@ -124,7 +124,7 @@ If you don't need a build step for your single-purpose CSS and JS files, you can
 
 ### Do I need to use everything in this demo project?
 
-No, many of the files in this demo project are simply examples. You can use them as a reference, but you don't need to copy them over to your project. This applies particularly to the CSS and JS assets used in this project -- if your project doesn't use WooCommerce or doesn't need any cart-related customizations, then you don't need a `<theme>/assets/css/build/cart.css` file! 
+No, many of the files in this demo project are simply examples. You can use them as a reference, but you don't need to copy them over to your project. This applies particularly to the CSS and JS assets used in this project -- if your project doesn't use WooCommerce or doesn't need any cart-related customizations, then you don't need a `<theme>/assets/css/build/cart.css` file!
 
 Similarly, if your project is English-only (and likely to remain so), then you don't need to include the `languages` folder and the `pot` file. And you probably don't need the build processes related to creating RTL versions of the CSS.
 
