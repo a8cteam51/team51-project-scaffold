@@ -20,7 +20,7 @@ function a8csp_features_get_metadata( ?string $property = null ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
 
-		$plugin_data = get_plugin_data( __DIR__ . '/a8csp-project-scaffold-features.php' );
+		$plugin_data = get_plugin_data( __DIR__ . '/a8csp-project-scaffold-features.php', true, false );
 	}
 
 	$metadata = $plugin_data;
