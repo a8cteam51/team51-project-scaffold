@@ -1,4 +1,4 @@
-name: Test for block.json files.
+name: Test for block.json files
 
 on:
   pull_request:
@@ -10,21 +10,43 @@ jobs:
     timeout-minutes: 3
 
     steps:
-    - uses: actions/checkout@v4
+      - name: Check for block.json files in PR (with pagination)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            let page = 1;
+            let blockJsonFound = false;
 
-    - name: Get all files
-      id: changed-block-json-files
-      uses: tj-actions/changed-files@v44
+            while (true) {
+              const { data: files } = await github.rest.pulls.listFiles({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: prNumber,
+                per_page: 100,
+                page
+              });
 
-    - name: Leave a comment and reject PR if block.json file is present
-      if: contains(steps.changed-block-json-files.outputs.all_changed_files, 'block.json')
-      uses: actions/github-script@v7
-      with:
-        script: |
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: '> [!CAUTION]\n> This PR includes a `block.json` file. If you are adding a new block, please ensure this goes into [the A8C Special Projects Monorepo](https://github.com/a8cteam51/special-projects-blocks-monorepo) instead. You will find[ full documentation on the process here](https://github.com/a8cteam51/special-projects-blocks-monorepo/wiki). Please discuss with A8CSP Engineering Leads if you believe your block should be exempt from the monorepo.'
-          })
-          core.setFailed('This PR included a block.json file and so was rejected.')
+              if (files.some(file => file.filename.endsWith('block.json'))) {
+                blockJsonFound = true;
+                break;
+              }
+
+              if (files.length < 100) {
+                break; // No more pages
+              }
+              page++;
+            }
+
+            if (blockJsonFound) {
+              await github.rest.issues.createComment({
+                issue_number: prNumber,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '> [!CAUTION]\n> This PR includes a `block.json` file. If you are adding a new block, please ensure this goes into [the A8C Special Projects Monorepo](https://github.com/a8cteam51/special-projects-blocks-monorepo) instead. You will find [full documentation on the process here](https://github.com/a8cteam51/special-projects-blocks-monorepo/wiki). Please discuss with A8CSP Engineering Leads if you believe your block should be exempt from the monorepo.'
+              });
+
+              core.setFailed('This PR included a block.json file and so was rejected.');
+            } else {
+              console.log('No block.json files found.');
+            }
