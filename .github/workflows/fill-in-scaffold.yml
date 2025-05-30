@@ -47,5 +47,12 @@ jobs:
       - name: Commit the changed files.
         run: git commit -am "chore -- fill in scaffolding placeholders"
 
+      - name: Clear out this fill-in-scaffold action (as it won‘t need to run again)
+        run: |
+          rm -f .github/workflows/fill-in-scaffold.yml
+          rm -f .github/workflows/fill-in-scaffold.mjs
+          git add .github/workflows
+          git commit -m "chore -- clear scaffold action"
+
       - name: Push all the changed files.
         run: git push
