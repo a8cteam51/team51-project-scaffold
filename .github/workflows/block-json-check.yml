@@ -1,4 +1,4 @@
-name: Test for block.json files
+name: Test for block.json files.
 
 on:
   pull_request:
@@ -10,43 +10,75 @@ jobs:
     timeout-minutes: 3
 
     steps:
-      - name: Check for block.json files in PR (with pagination)
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const prNumber = context.payload.pull_request.number;
-            let page = 1;
-            let blockJsonFound = false;
+    - uses: actions/checkout@v4
 
-            while (true) {
-              const { data: files } = await github.rest.pulls.listFiles({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: prNumber,
-                per_page: 100,
-                page
-              });
+    - name: Get all files
+      id: changed-block-json-files
+      uses: tj-actions/changed-files@v44
 
-              if (files.some(file => file.filename.endsWith('block.json'))) {
-                blockJsonFound = true;
-                break;
-              }
+    - name: Debug - Show all changed files
+      run: |
+        echo "All changed files:"
+        echo "${{ steps.changed-block-json-files.outputs.all_changed_files }}"
 
-              if (files.length < 100) {
-                break; // No more pages
-              }
-              page++;
-            }
+    - name: Check block.json files
+      id: check-blocks
+      run: |
+        # Get all changed block.json files
+        CHANGED_FILES="${{ steps.changed-block-json-files.outputs.all_changed_files }}"
 
-            if (blockJsonFound) {
-              await github.rest.issues.createComment({
-                issue_number: prNumber,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: '> [!CAUTION]\n> This PR includes a `block.json` file. If you are adding a new block, please ensure this goes into [the A8C Special Projects Monorepo](https://github.com/a8cteam51/special-projects-blocks-monorepo) instead. You will find [full documentation on the process here](https://github.com/a8cteam51/special-projects-blocks-monorepo/wiki). Please discuss with A8CSP Engineering Leads if you believe your block should be exempt from the monorepo.'
-              });
+        echo -e "\nLooking for block.json files..."
+        BLOCK_FILES=$(echo "$CHANGED_FILES" | grep -o '[^ ]*block\.json[^ ]*' || true)
 
-              core.setFailed('This PR included a block.json file and so was rejected.');
-            } else {
-              console.log('No block.json files found.');
-            }
+        if [ -n "$BLOCK_FILES" ]; then
+          echo -e "\nFound block.json files:"
+            echo "$BLOCK_FILES"
+        else
+          # If no block.json files are found, exit early
+            echo "No block.json files found"
+          exit 0
+        fi
+
+        # List of files found
+        found_files=()
+
+        BLOCK_FILES_ARRAY=($BLOCK_FILES)
+
+        echo -e "\nProcessing block.json files:"
+        # Check each block.json file
+        for file in "${BLOCK_FILES_ARRAY[@]}"; do
+            echo "Checking file: $file"
+            if [ -f "$file" ]; then
+                echo "File exists, checking contents..."
+                # Check if the block.json has the ignore property
+                if jq -e '.ignoreBlockJsonCheck == true' "$file" > /dev/null 2>&1; then
+                    echo "✅ Found ignored block.json: $file"
+                else
+                    echo "❌ Found block.json: $file"
+              found_files+=("$file")
+                fi
+            else
+                echo "⚠️ File not found: $file"
+            fi
+        done
+
+        # If we found any block.json files, print them
+        if [ -n "$(echo "$found_files")" ]; then
+          echo -e "\n\nFound the following block.json files:"
+          echo "${found_files[@]}"
+          echo "non_ignored_blocks=true" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Leave a comment and reject PR if non-ignored block.json file is present
+      if: steps.check-blocks.outputs.non_ignored_blocks == 'true'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: '> [!CAUTION]\n> This PR includes a `block.json` file that is not marked to ignore the check. If you are adding a new block, please ensure this goes into [the A8C Special Projects Monorepo](https://github.com/a8cteam51/special-projects-blocks-monorepo) instead. You will find[ full documentation on the process here](https://github.com/a8cteam51/special-projects-blocks-monorepo/wiki).\n\nTo ignore this check for a block, add `"ignoreBlockJsonCheck": true` to your block.json file.'
+          })
+          core.setFailed('This PR included a non-ignored block.json file and so was rejected.')
+
