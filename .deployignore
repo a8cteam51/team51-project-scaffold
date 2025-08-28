@@ -1,3 +1,9 @@
+## Ensure core folders don't get deleted in deploys if deleted in this repo.
+themes
+mu-plugins
+plugins
+uploads
+
 ## Visual Studio Code
 .vscode
 .vscode/**
