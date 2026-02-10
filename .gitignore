@@ -275,6 +275,10 @@ phpcs.xml
 # *.iml
 # *.ipr
 
+# Studio
+db.php
+database/*
+
 # CMake
 cmake-build-*/
 
