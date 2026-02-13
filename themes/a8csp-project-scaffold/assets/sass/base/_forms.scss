@@ -1,0 +1,22 @@
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="phone"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"] {
+	background-color: var(--wp--preset--color--base);
+	border: 1px solid var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--contrast);
+	padding: 1em;
+}
+
+input[type="submit"],
+input[type="reset"] {
+	background-color: var(--wp--preset--color--contrast);
+	border: none;
+	color: var(--wp--preset--color--base);
+	padding: 1em;
+}
