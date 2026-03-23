@@ -1,10 +1,40 @@
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   line-height: 20px;
+  /* Font smoothing */
+  text-rendering: geometricprecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 @media (max-width: 781px) {
   body {
     line-height: 16px;
   }
+}
+
+/* Reduce widows and orphans */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+caption,
+figcaption,
+li {
+  text-wrap: pretty;
+}
+
+/* Remove double-bold headings */
+.wp-block-heading strong,
+.wp-block-heading b {
+  font-weight: inherit;
 }
 
 /**

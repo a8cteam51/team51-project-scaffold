@@ -16,14 +16,6 @@
     {
       "type": "vcs",
       "url": "https://github.com/a8cteam51/team51-configs"
-    },
-    {
-      "type": "composer",
-      "url": "https://wpackagist.org",
-      "only": [
-        "wpackagist-plugin/*",
-        "wpackagist-theme/*"
-      ]
     }
   ],
   "require": {
@@ -33,8 +25,6 @@
   "require-dev": {
     "a8cteam51/team51-configs": "dev-trunk",
     "wp-cli/i18n-command": "^2.6",
-
-    "wpackagist-plugin/woocommerce": "*",
 
     "roave/security-advisories": "dev-latest"
   },
