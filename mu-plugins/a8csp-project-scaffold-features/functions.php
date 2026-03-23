@@ -16,7 +16,6 @@ function a8csp_features_get_metadata( ?string $property = null ) {
 
 	if ( null === $plugin_data ) {
 		if ( ! function_exists( 'get_plugin_data' ) ) {
-			/* @phpstan-ignore requireOnce.fileNotFound */
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
 
