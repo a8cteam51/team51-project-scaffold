@@ -49,7 +49,7 @@ li {
 
 /* Remove double-bold headings */
 .wp-block-heading strong,
-.wp-block-heading bold {
+.wp-block-heading b {
   font-weight: inherit;
 }
 
