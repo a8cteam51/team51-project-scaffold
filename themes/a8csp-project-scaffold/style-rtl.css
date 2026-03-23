@@ -15,10 +15,11 @@ Domain Path:        /languages
 Tags:               scaffold
 */
 /* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
 }
-
 body {
   line-height: 20px;
   /* Font smoothing */

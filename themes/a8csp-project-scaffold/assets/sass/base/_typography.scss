@@ -1,8 +1,10 @@
 @use "../abstracts/mixins" as *;
 
 /* Smooth scrolling */
-html {
-	scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+	* {
+		scroll-behavior: smooth;
+	}
 }
 
 body {
