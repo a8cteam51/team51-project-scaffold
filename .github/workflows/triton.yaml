@@ -1,0 +1,22 @@
+# managed-by: opsoasis-repo-sync 9d7f7fc
+name: Require Approved Review
+
+on:
+  pull_request:
+    types: [opened, unlabeled]
+    branches:
+      - trunk
+
+jobs:
+  require_review:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      issues: write
+      contents: read
+
+    steps:
+      - uses: a8cteam51/poseidon-actions/pr-triton@trunk
+        with:
+          github_token: ${{ github.token }}
+          triton_mode: ${{ vars.TRITON_MODE || 'selective' }}
