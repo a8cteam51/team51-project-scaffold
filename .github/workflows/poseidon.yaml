@@ -1,11 +1,17 @@
-# managed-by: opsoasis-repo-sync 9d7f7fc
+# managed-by: opsoasis-repo-sync 41f76ed
 name: Poseidon
 
 on:
   issues:
     types: [assigned, labeled]
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, labeled]
+  workflow_dispatch:
+    inputs:
+      fix_pr:
+        description: "PR number for an auto-chained review-fix run"
+        required: false
+        default: ""
 
 jobs:
   plan:
@@ -30,9 +36,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           BLOG_ID=$(gh api "repos/${{ github.repository }}/properties/values" \
-            --jq '.[] | select(.property_name == "wpcom-blog-id") | .value')
+            --jq '.[] | select(.property_name == "wpcom-blog-id-production") | .value')
           SITE_URL=$(gh api "repos/${{ github.repository }}/properties/values" \
-            --jq '.[] | select(.property_name == "production-url") | .value')
+            --jq '.[] | select(.property_name == "site-url-production") | .value')
           echo "blog_id=$BLOG_ID" >> "$GITHUB_OUTPUT"
           echo "site_url=$SITE_URL" >> "$GITHUB_OUTPUT"
 
@@ -43,8 +49,6 @@ jobs:
       - uses: a8cteam51/poseidon-actions/issue-plan@trunk
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          pressable_mcp_token: ${{ secrets.PRESSABLE_MCP_TOKEN }}
-          wpcom_bearer_token: ${{ secrets.WPCOM_BEARER_TOKEN }}
           production_site_id: ${{ steps.props.outputs.blog_id }}
           production_site_url: ${{ steps.props.outputs.site_url }}
           issue_number: ${{ github.event.issue.number }}
@@ -73,9 +77,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           BLOG_ID=$(gh api "repos/${{ github.repository }}/properties/values" \
-            --jq '.[] | select(.property_name == "wpcom-blog-id") | .value')
+            --jq '.[] | select(.property_name == "wpcom-blog-id-production") | .value')
           SITE_URL=$(gh api "repos/${{ github.repository }}/properties/values" \
-            --jq '.[] | select(.property_name == "production-url") | .value')
+            --jq '.[] | select(.property_name == "site-url-production") | .value')
           echo "blog_id=$BLOG_ID" >> "$GITHUB_OUTPUT"
           echo "site_url=$SITE_URL" >> "$GITHUB_OUTPUT"
 
@@ -86,8 +90,6 @@ jobs:
       - uses: a8cteam51/poseidon-actions/issue-implement@trunk
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          pressable_mcp_token: ${{ secrets.PRESSABLE_MCP_TOKEN }}
-          wpcom_bearer_token: ${{ secrets.WPCOM_BEARER_TOKEN }}
           production_site_id: ${{ steps.props.outputs.blog_id }}
           production_site_url: ${{ steps.props.outputs.site_url }}
           issue_number: ${{ github.event.issue.number }}
@@ -129,8 +131,6 @@ jobs:
       - uses: a8cteam51/poseidon-actions/issue-implement-v2@trunk
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          pressable_mcp_token: ${{ secrets.PRESSABLE_MCP_TOKEN }}
-          wpcom_bearer_token: ${{ secrets.WPCOM_BEARER_TOKEN }}
           production_site_id: ${{ steps.props.outputs.blog_id }}
           production_site_url: ${{ steps.props.outputs.site_url }}
           issue_number: ${{ github.event.issue.number }}
@@ -139,7 +139,9 @@ jobs:
           github_token: ${{ github.token }}
 
   review:
-    if: github.event_name == 'pull_request'
+    if: |
+      github.event_name == 'pull_request' &&
+      (github.event.action == 'opened' || github.event.action == 'synchronize')
     runs-on: ubuntu-latest
     timeout-minutes: 20
     concurrency:
@@ -148,6 +150,8 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+      issues: write
+      actions: write
       id-token: write
     steps:
       - uses: actions/checkout@v6
@@ -158,3 +162,26 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ github.token }}
+
+  review-fix:
+    if: |
+      (github.event_name == 'pull_request' &&
+       github.event.action == 'labeled' && github.event.label.name == 'poseidon-fix-review') ||
+      (github.event_name == 'workflow_dispatch' && inputs.fix_pr != '')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: poseidon-review-fix-${{ github.event.pull_request.number || inputs.fix_pr }}
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      # claude-code-action exchanges an OIDC token for its GitHub App token.
+      id-token: write
+    steps:
+      - uses: a8cteam51/poseidon-actions/pr-review-fix@trunk
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ github.token }}
+          pr_number: ${{ github.event.pull_request.number || inputs.fix_pr }}
