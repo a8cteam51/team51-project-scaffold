@@ -38,19 +38,20 @@ jobs:
     permissions:
       contents: read
       actions: read
+      # SARIF upload to the Security tab on public repos (free code scanning).
+      security-events: write
     steps:
       - name: Checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
         with:
           persist-credentials: false
 
-      # Advisory mode: scaffolded projects may not have GitHub Advanced Security,
-      # without which the action fails CI on findings. advanced-security: false +
-      # continue-on-error keeps findings non-blocking (they print in the Actions
-      # log). Once a project enables Advanced Security, remove both and add
-      # `security-events: write` above to route findings to the Security tab.
+      # Adapts to the repo: public repos (this scaffold, or any public project
+      # scaffolded from it) get free code scanning, so zizmor uploads SARIF to the
+      # Security tab. Private projects on the Free plan have no code scanning, so it
+      # runs advisory -- findings print in the Actions log and never fail CI.
       - name: Run zizmor
         uses: zizmorcore/zizmor-action@192e21d79ab29983730a13d1382995c2307fbcaa
-        continue-on-error: true
+        continue-on-error: ${{ github.event.repository.visibility != 'public' }}
         with:
-          advanced-security: false
+          advanced-security: ${{ github.event.repository.visibility == 'public' }}
