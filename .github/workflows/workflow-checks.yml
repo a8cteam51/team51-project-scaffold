@@ -1,0 +1,53 @@
+name: Workflow Checks
+
+on:
+  push:
+    branches: [trunk]
+    paths: ['.github/workflows/**']
+  pull_request:
+    paths: ['.github/workflows/**']
+  schedule:
+    # Weekly Monday 06:00 UTC. Keeps zizmor's online audits (e.g.
+    # known-vulnerable-actions) fresh between workflow changes.
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  actionlint:
+    name: Actionlint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        with:
+          persist-credentials: false
+
+      - name: Run actionlint
+        uses: raven-actions/actionlint@205b530c5d9fa8f44ae9ed59f341a0db994aa6f8
+
+  zizmor:
+    name: Zizmor
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        with:
+          persist-credentials: false
+
+      # Advisory mode: scaffolded projects may not have GitHub Advanced Security,
+      # without which the action fails CI on findings. advanced-security: false +
+      # continue-on-error keeps findings non-blocking (they print in the Actions
+      # log). Once a project enables Advanced Security, remove both and add
+      # `security-events: write` above to route findings to the Security tab.
+      - name: Run zizmor
+        uses: zizmorcore/zizmor-action@5f14fd08f7cf1cb1609c1e344975f152c7ee938d
+        continue-on-error: true
+        with:
+          advanced-security: false
