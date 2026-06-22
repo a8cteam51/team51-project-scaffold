@@ -6,16 +6,21 @@ on:
   pull_request:
     branches: [ trunk, develop ]
 
+permissions:
+  contents: read
+
 jobs:
   lint-js_css-files:
     runs-on: ubuntu-latest
     timeout-minutes: 3
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
 
       - name: Setup proper Node.js version
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version-file: 'package.json'
 
