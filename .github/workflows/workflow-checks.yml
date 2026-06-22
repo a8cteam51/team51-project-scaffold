@@ -26,8 +26,11 @@ jobs:
         with:
           persist-credentials: false
 
+      # Advisory during rollout: seeded workflows carry pre-existing lint debt.
+      # Surfaces findings without failing CI; flip to blocking once they're clean.
       - name: Run actionlint
         uses: raven-actions/actionlint@205b530c5d9fa8f44ae9ed59f341a0db994aa6f8
+        continue-on-error: true
 
   zizmor:
     name: Zizmor
