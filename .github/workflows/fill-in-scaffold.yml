@@ -15,7 +15,8 @@ jobs:
 
     steps:
       # Persisted credentials are required: later steps commit and `git push` the scaffold rename.
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2 # zizmor: ignore[artipacked]
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        # zizmor: ignore[artipacked] git push of the rename needs the persisted token
 
       - name: Setup proper Node.js version
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
