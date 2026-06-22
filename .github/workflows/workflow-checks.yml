@@ -50,8 +50,12 @@ jobs:
       # scaffolded from it) get free code scanning, so zizmor uploads SARIF to the
       # Security tab. Private projects on the Free plan have no code scanning, so it
       # runs advisory -- findings print in the Actions log and never fail CI.
+      # online-audits disabled: the repo-sync-managed poseidon.yaml references
+      # a8cteam51/poseidon-actions/*@trunk, which the scoped CI token can't resolve
+      # cross-repo (zizmor's online ref-confusion audit errors out). Offline audits run.
       - name: Run zizmor
         uses: zizmorcore/zizmor-action@192e21d79ab29983730a13d1382995c2307fbcaa
         continue-on-error: ${{ github.event.repository.visibility != 'public' }}
         with:
           advanced-security: ${{ github.event.repository.visibility == 'public' }}
+          online-audits: false
