@@ -57,5 +57,8 @@ jobs:
         uses: zizmorcore/zizmor-action@192e21d79ab29983730a13d1382995c2307fbcaa
         continue-on-error: ${{ github.event.repository.visibility != 'public' }}
         with:
+          # Scope to this repo's own workflows -- don't audit third-party CI
+          # files a scaffolded project may commit under vendor/ or node_modules/.
+          inputs: .github/workflows
           advanced-security: ${{ github.event.repository.visibility == 'public' }}
           online-audits: false
