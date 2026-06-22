@@ -42,7 +42,7 @@ jobs:
           echo "blog_id=$BLOG_ID" >> "$GITHUB_OUTPUT"
           echo "site_url=$SITE_URL" >> "$GITHUB_OUTPUT"
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.0
         with:
           fetch-depth: 1
 
@@ -83,7 +83,7 @@ jobs:
           echo "blog_id=$BLOG_ID" >> "$GITHUB_OUTPUT"
           echo "site_url=$SITE_URL" >> "$GITHUB_OUTPUT"
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.0
         with:
           fetch-depth: 0
 
@@ -124,7 +124,7 @@ jobs:
           echo "blog_id=$BLOG_ID" >> "$GITHUB_OUTPUT"
           echo "site_url=$SITE_URL" >> "$GITHUB_OUTPUT"
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.0
         with:
           fetch-depth: 0
 
@@ -154,7 +154,7 @@ jobs:
       actions: write
       id-token: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.0
         with:
           fetch-depth: 0
 
