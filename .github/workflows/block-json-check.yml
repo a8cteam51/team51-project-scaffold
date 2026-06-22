@@ -4,28 +4,40 @@ on:
   pull_request:
     branches: [ trunk, develop ]
 
+permissions:
+  contents: read
+
 jobs:
   block-file-check:
     runs-on: ubuntu-latest
     timeout-minutes: 3
+    permissions:
+      contents: read
+      pull-requests: write
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      with:
+        persist-credentials: false
 
     - name: Get all files
       id: changed-block-json-files
-      uses: tj-actions/changed-files@v44
+      uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96 # v47.0.6
 
     - name: Debug - Show all changed files
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-block-json-files.outputs.all_changed_files }}
       run: |
         echo "All changed files:"
-        echo "${{ steps.changed-block-json-files.outputs.all_changed_files }}"
+        echo "$ALL_CHANGED_FILES"
 
     - name: Check block.json files
       id: check-blocks
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-block-json-files.outputs.all_changed_files }}
       run: |
         # Get all changed block.json files
-        CHANGED_FILES="${{ steps.changed-block-json-files.outputs.all_changed_files }}"
+        CHANGED_FILES="$ALL_CHANGED_FILES"
 
         echo -e "\nLooking for block.json files..."
         BLOCK_FILES=$(echo "$CHANGED_FILES" | grep -o '[^ ]*block\.json[^ ]*' || true)
@@ -42,6 +54,9 @@ jobs:
         # List of files found
         found_files=()
 
+        # Intentional word-split: grep emits one path per line, so the unquoted
+        # expansion splits on IFS (whitespace + newlines) into one element each.
+        # shellcheck disable=SC2206
         BLOCK_FILES_ARRAY=($BLOCK_FILES)
 
         echo -e "\nProcessing block.json files:"
@@ -63,15 +78,15 @@ jobs:
         done
 
         # If we found any block.json files, print them
-        if [ -n "$(echo "$found_files")" ]; then
+        if [ "${#found_files[@]}" -gt 0 ]; then
           echo -e "\n\nFound the following block.json files:"
           echo "${found_files[@]}"
-          echo "non_ignored_blocks=true" >> $GITHUB_OUTPUT
+          echo "non_ignored_blocks=true" >> "$GITHUB_OUTPUT"
         fi
 
     - name: Leave a comment and reject PR if non-ignored block.json file is present
       if: steps.check-blocks.outputs.non_ignored_blocks == 'true'
-      uses: actions/github-script@v7
+      uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
       with:
         script: |
           github.rest.issues.createComment({

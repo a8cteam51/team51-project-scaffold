@@ -14,10 +14,12 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      # Persisted credentials are required: later steps commit and `git push` the scaffold rename.
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        # zizmor: ignore[artipacked] git push of the rename needs the persisted token
 
       - name: Setup proper Node.js version
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version-file: 'package.json'
 
@@ -25,19 +27,23 @@ jobs:
         run: git config --local user.name 'github-actions[bot]' && git config --local user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Rearrange some directories.
+        env:
+          REPO_NAME: ${{ github.event.repository.name }}
         run: |
           git submodule init
           git submodule update
           git mv --force README.scaffold.md README.md
-          git mv themes/a8csp-project-scaffold themes/${{ github.event.repository.name }}
-          git mv mu-plugins/a8csp-project-scaffold-features/a8csp-project-scaffold-features.php mu-plugins/a8csp-project-scaffold-features/${{ github.event.repository.name }}-features.php
-          git mv mu-plugins/a8csp-project-scaffold-features mu-plugins/${{ github.event.repository.name }}-features
+          git mv themes/a8csp-project-scaffold "themes/$REPO_NAME"
+          git mv mu-plugins/a8csp-project-scaffold-features/a8csp-project-scaffold-features.php "mu-plugins/a8csp-project-scaffold-features/$REPO_NAME-features.php"
+          git mv mu-plugins/a8csp-project-scaffold-features "mu-plugins/$REPO_NAME-features"
 
       - name: Commit the changed files.
         run: git commit -am "chore -- rename files from scaffolding"
 
       - name: Perform string replacements within the files.
-        run: node ./.github/workflows/fill-in-scaffold.mjs '${{ toJSON( github.event.repository ) }}'
+        env:
+          REPOSITORY_JSON: ${{ toJSON( github.event.repository ) }}
+        run: node ./.github/workflows/fill-in-scaffold.mjs "$REPOSITORY_JSON"
 
       - name: Delete and regenerate package-lock.json.
         run: |
