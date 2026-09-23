@@ -1,7 +1,7 @@
 # Automattic Special Projects -- Project Scaffold
 
 > [!IMPORTANT]
-> **Superseded by [a8csp-project-template](https://github.com/a8cteam51/a8csp-project-template).** Start new projects from it. Projects already generated from it are independent repositories and keep working as they are.
+> **Superseded by [a8csp-project-template](https://github.com/a8cteam51/a8csp-project-template).** Start new projects from it. Projects already generated from this scaffold are independent copies; archiving this repository doesn't change them.
 
 This is a demo project for showcasing standardized build processes of theme and plugin assets. Learn more about it in the [Soft Launch](https://wpspecialprojectsp2.wordpress.com/2023/01/26/front-end-build-processes-task-force-product-soft-launch/) post.
 
