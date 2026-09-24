@@ -22,14 +22,14 @@ jobs:
       contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
 
       # Advisory during rollout: seeded workflows carry pre-existing lint debt.
       # Surfaces findings without failing CI; flip to blocking once they're clean.
       - name: Run actionlint
-        uses: raven-actions/actionlint@205b530c5d9fa8f44ae9ed59f341a0db994aa6f8
+        uses: raven-actions/actionlint@3d39aea434753780c3b3d4a1a31c854b4dbf49d7
         continue-on-error: true
 
   zizmor:
@@ -42,7 +42,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
 
@@ -54,7 +54,7 @@ jobs:
       # a8cteam51/poseidon-actions/*@trunk, which the scoped CI token can't resolve
       # cross-repo (zizmor's online ref-confusion audit errors out). Offline audits run.
       - name: Run zizmor
-        uses: zizmorcore/zizmor-action@192e21d79ab29983730a13d1382995c2307fbcaa
+        uses: zizmorcore/zizmor-action@70fb788f84895a7701f5643d103d587e460b5c99
         continue-on-error: ${{ github.event.repository.visibility != 'public' }}
         with:
           # Scope to this repo's own workflows -- don't audit third-party CI
